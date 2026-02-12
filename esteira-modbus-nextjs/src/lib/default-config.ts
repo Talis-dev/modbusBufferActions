@@ -102,6 +102,9 @@ export const defaultConfig: SystemConfig = {
   // Ciclo de leitura
   readCycleMs: 100, // 100ms (10 leituras por segundo)
 
+  // Modo Fachina (limpeza)
+  cleaningModeCoil: 20, // Coil 20 para modo fachina
+
   // Sistema ativo
   systemActive: false,
 };

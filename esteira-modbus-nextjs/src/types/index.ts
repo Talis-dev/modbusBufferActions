@@ -85,6 +85,9 @@ export interface SystemConfig {
   // Ciclo de leitura
   readCycleMs: number; // Intervalo de leitura (padrão: 100ms)
 
+  // Modo Fachina (limpeza)
+  cleaningModeCoil: number; // Coil para ativar modo fachina (padrão: 20)
+
   // Sistema ativo
   systemActive: boolean;
 }
@@ -96,6 +99,7 @@ export interface SystemState {
   connected: boolean;
   slaveConnected: boolean;
   clpConnected: boolean;
+  cleaningMode: boolean; // Modo fachina ativo
   queues: OutputQueue[];
   sensors: OutputSensor[];
   totalProductsProcessed: number;

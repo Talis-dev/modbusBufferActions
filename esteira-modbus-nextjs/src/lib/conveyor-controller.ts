@@ -17,6 +17,7 @@ export class ConveyorController {
   private errorCount: number = 0;
   private firstErrorTime?: number;
   private autoStopScheduled: boolean = false;
+  private cleaningMode: boolean = false; // Modo fachina
 
   // Estado dos sensores de entrada (últimos valores lidos)
   private lastInputStates: boolean[] = [];
@@ -308,6 +309,7 @@ export class ConveyorController {
       connected: this.running,
       slaveConnected: slaveClient.isConnected(),
       clpConnected: clpConnected,
+      cleaningMode: this.cleaningMode,
       queues: this.queueManager.getAllQueues(),
       sensors: Array.from(this.outputSensors.values()),
       totalProductsProcessed: stats.totalProcessed,
@@ -341,5 +343,30 @@ export class ConveyorController {
     }
     
     console.log("[Controller] Configuração atualizada");
+  }
+
+  /**
+   * Alterna o modo fachina (limpeza)
+   */
+  toggleCleaningMode(): boolean {
+    if (!this.modbusServer || !this.running) {
+      console.warn("[Controller] Não é possível alternar modo fachina - sistema não está rodando");
+      return false;
+    }
+
+    this.cleaningMode = !this.cleaningMode;
+    
+    // Escreve no coil configurado
+    this.modbusServer.writeCoil(this.config.cleaningModeCoil, this.cleaningMode);
+    
+    console.log(`[Controller] Modo fachina ${this.cleaningMode ? "ATIVADO" : "DESATIVADO"}`);
+    return this.cleaningMode;
+  }
+
+  /**
+   * Obtém estado do modo fachina
+   */
+  isCleaningMode(): boolean {
+    return this.cleaningMode;
   }
 }

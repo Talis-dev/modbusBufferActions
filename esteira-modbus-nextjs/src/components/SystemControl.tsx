@@ -6,11 +6,14 @@
 
 import { useState, useEffect } from "react";
 import { PlayIcon, StopIcon } from "@heroicons/react/24/solid";
+import { SparklesIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
 
 export default function SystemControl() {
   const [running, setRunning] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cleaningMode, setCleaningMode] = useState(false);
+  const [cleaningLoading, setCleaningLoading] = useState(false);
 
   useEffect(() => {
     // Sincronizar estado ao carregar
@@ -39,11 +42,12 @@ export default function SystemControl() {
       const data = await response.json();
 
       // Sistema está rodando se o controlador existe (running=true)
-      // Não precisa estar conectado ainda
       setRunning(data.running === true);
+      setCleaningMode(data.state?.cleaningMode === true);
     } catch (error) {
       console.error("Erro ao verificar status:", error);
       setRunning(false);
+      setCleaningMode(false);
     }
   };
 
@@ -81,6 +85,7 @@ export default function SystemControl() {
       const data = await response.json();
       if (data.success) {
         setRunning(false);
+        setCleaningMode(false);
       } else {
         alert(`Erro ao parar: ${data.error}`);
       }
@@ -88,6 +93,26 @@ export default function SystemControl() {
       alert(`Erro ao parar sistema: ${error.message}`);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleToggleCleaningMode = async () => {
+    setCleaningLoading(true);
+    try {
+      const response = await fetch("/api/modbus/cleaning-mode", {
+        method: "POST",
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setCleaningMode(data.cleaningMode);
+      } else {
+        alert(`Erro ao alternar modo fachina: ${data.error}`);
+      }
+    } catch (error: any) {
+      alert(`Erro: ${error.message}`);
+    } finally {
+      setCleaningLoading(false);
     }
   };
 
@@ -127,6 +152,29 @@ export default function SystemControl() {
           <StopIcon className="w-5 h-5" />
           {loading && running ? "Parando..." : "Parar Sistema"}
         </button>
+
+
+        {/* Botão Modo Fachina */}
+        <button
+          onClick={handleToggleCleaningMode}
+          disabled={!running || cleaningLoading}
+          className={cn(
+            "w-fit flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+            "disabled:opacity-50 disabled:cursor-not-allowed",
+            !running
+              ? "bg-gray-100 text-gray-400"
+              : cleaningMode
+                ? "bg-orange-600 text-white hover:bg-orange-700 active:scale-95 animate-pulse-slow"
+                : "bg-purple-600 text-white hover:bg-purple-700 active:scale-95",
+          )}
+        >
+          <SparklesIcon className="w-5 h-5" />
+          {cleaningLoading
+            ? "Alternando..."
+            : cleaningMode
+              ? "🔧 Modo Fachina ATIVO"
+              : "Ativar Modo Fachina"}
+        </button>
       </div>
 
       {/* Status Indicator */}
@@ -151,6 +199,27 @@ export default function SystemControl() {
           </div>
         </div>
       </div>
+
+      {/* Alerta Modo Fachina */}
+      {cleaningMode && (
+        <div className="mt-4 p-4 rounded-lg bg-orange-100 border-2 border-orange-500 animate-pulse-slow">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-orange-500 animate-ping" />
+              <span className="text-sm font-bold text-orange-900">
+                ⚠️ MODO FACHINA ATIVO
+              </span>
+            </div>
+            <div className="text-xs text-orange-800 space-y-1 ml-5">
+              <p>✓ Módulos levantados</p>
+              <p>✓ Roletes ativos</p>
+              <p className="font-semibold">
+                ⚠️ ATENÇÃO: Máquina em movimento rotativo!
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
