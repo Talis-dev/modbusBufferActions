@@ -27,6 +27,7 @@ export const defaultConfig: SystemConfig = {
       delayTime: 4, // 4 segundos
       toleranceTime: 1, // 1 segundo de tolerância
       pulseDuration: 500, // 500ms de pulso
+      activeEngineDuration: 20, //  (2s) de motor ativo no clp
       inputAddress: 1, // Coil 1 - recebe pulsos
       outputAddress: 6, // Coil 6 - envia pulsos ao CLP
       enabled: true,
@@ -37,6 +38,7 @@ export const defaultConfig: SystemConfig = {
       delayTime: 8, // 8 segundos
       toleranceTime: 1,
       pulseDuration: 500,
+      activeEngineDuration: 20,
       inputAddress: 2,
       outputAddress: 7,
       enabled: true,
@@ -47,6 +49,7 @@ export const defaultConfig: SystemConfig = {
       delayTime: 12, // 12 segundos
       toleranceTime: 1,
       pulseDuration: 500,
+      activeEngineDuration: 20,
       inputAddress: 3,
       outputAddress: 8,
       enabled: true,
@@ -57,6 +60,7 @@ export const defaultConfig: SystemConfig = {
       delayTime: 16, // 16 segundos
       toleranceTime: 1,
       pulseDuration: 500,
+      activeEngineDuration: 20,
       inputAddress: 4,
       outputAddress: 9,
       enabled: true,
@@ -67,6 +71,7 @@ export const defaultConfig: SystemConfig = {
       delayTime: 20, // 20 segundos
       toleranceTime: 1,
       pulseDuration: 500,
+      activeEngineDuration: 20,
       inputAddress: 5,
       outputAddress: 10,
       enabled: true,
@@ -77,6 +82,7 @@ export const defaultConfig: SystemConfig = {
       delayTime: 24, // 24 segundos
       toleranceTime: 1,
       pulseDuration: 500,
+      activeEngineDuration: 20,
       inputAddress: 6,
       outputAddress: 11,
       enabled: true,

@@ -62,6 +62,12 @@ export class ConveyorController {
       this.modbusServer = new ModbusServer(this.config.clpPort);
       await this.modbusServer.start();
 
+      // Configura tempos de motor ativo nos holding registers para o CLP ler
+      const engineDurations = this.config.outputs.map(
+        (output) => output.activeEngineDuration,
+      );
+      this.modbusServer.setEngineActiveDurations(engineDurations);
+
       this.running = true;
       this.startCycle();
 
@@ -325,6 +331,15 @@ export class ConveyorController {
     this.config = config;
     // Reinicializa o queue manager com as novas configurações
     this.queueManager = new QueueManager(config.outputs);
+    
+    // Atualiza tempos de motor ativo nos holding registers
+    if (this.modbusServer) {
+      const engineDurations = config.outputs.map(
+        (output) => output.activeEngineDuration,
+      );
+      this.modbusServer.setEngineActiveDurations(engineDurations);
+    }
+    
     console.log("[Controller] Configuração atualizada");
   }
 }

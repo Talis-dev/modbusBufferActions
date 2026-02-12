@@ -11,6 +11,7 @@ export interface OutputConfig {
   delayTime: number; // Tempo até produto chegar (4s, 8s, 12s, 16s, 20s, 24s)
   toleranceTime: number; // Tempo de tolerância (padrão: 1s)
   pulseDuration: number; // Duração do pulso de saída em ms (padrão: 500ms)
+  activeEngineDuration: number; // Tempo de motor ativo em ms (escrito em holding register para CLP)
   inputAddress: number; // Endereço Modbus da coil de ENTRADA (1-6) - pulsos recebidos
   outputAddress: number; // Endereço Modbus da coil de SAÍDA (6-11) - pulsos enviados ao CLP
   enabled: boolean; // Saída habilitada

@@ -288,4 +288,19 @@ export class ModbusServer {
       this.writeRegister(startAddress + index, value);
     });
   }
+
+  /**
+   * Configura tempos de motor ativo nos holding registers
+   * Registers 0-5: Tempo de motor ativo para cada saída (1-6)
+   * CLP lê esses valores para saber quanto tempo manter motor ativo
+   */
+  setEngineActiveDurations(durations: number[]): void {
+    durations.forEach((duration, index) => {
+      this.writeRegister(index, duration); // Register 0 = Saída 1, Register 1 = Saída 2, etc
+    });
+    systemLogger.info(
+      "Modbus Server",
+      `Tempos de motor ativo configurados: ${durations.join(", ")} ms`,
+    );
+  }
 }

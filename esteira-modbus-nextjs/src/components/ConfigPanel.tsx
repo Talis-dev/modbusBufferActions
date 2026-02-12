@@ -246,7 +246,7 @@ export default function ConfigPanel() {
             <div>Pulso (ms)</div>
             <div>Coil Entrada</div>
             <div>Coil Saída</div>
-            <div>ID</div>
+            <div>Motor Ativo (ms)</div>
             <div className="text-center">Ativo</div>
           </div>
           <div className="space-y-3">
@@ -345,9 +345,16 @@ function OutputConfigRow({
         />
       </div>
       <div>
-        <div className="w-full px-2 py-1 text-sm text-center bg-gray-100 rounded border border-gray-200">
-          {output.id}
-        </div>
+        <input
+          type="number"
+          value={output.activeEngineDuration}
+          onChange={(e) =>
+            onChange({ ...output, activeEngineDuration: parseInt(e.target.value) })
+          }
+          className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-orange-50"
+          placeholder="Motor"
+          title="Tempo que o motor ficará ativo (ms) - escrito em holding register para CLP ler"
+        />
       </div>
       <div className="flex justify-center">
         <input
