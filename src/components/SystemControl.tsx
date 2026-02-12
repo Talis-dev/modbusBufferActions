@@ -4,7 +4,7 @@
 // COMPONENTE - CONTROLE DO SISTEMA
 // ============================================
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PlayIcon, StopIcon } from "@heroicons/react/24/solid";
 import { SparklesIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
@@ -12,8 +12,10 @@ import { cn } from "@/lib/utils";
 export default function SystemControl() {
   const [running, setRunning] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [connecting, setConnecting] = useState(false);
   const [cleaningMode, setCleaningMode] = useState(false);
   const [cleaningLoading, setCleaningLoading] = useState(false);
+  const connectingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Sincronizar estado ao carregar
@@ -25,7 +27,13 @@ export default function SystemControl() {
       checkStatus();
     }, 2000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      // Limpar timeout ao desmontar
+      if (connectingTimeoutRef.current) {
+        clearTimeout(connectingTimeoutRef.current);
+      }
+    };
   }, []);
 
   const syncState = async () => {
@@ -42,8 +50,14 @@ export default function SystemControl() {
       const data = await response.json();
 
       // Sistema está rodando se o controlador existe (running=true)
-      setRunning(data.running === true);
+      const isRunning = data.running === true;
+      setRunning(isRunning);
       setCleaningMode(data.state?.cleaningMode === true);
+
+      // Se o sistema está rodando, limpar connecting
+      if (isRunning) {
+        setConnecting(false);
+      }
     } catch (error) {
       console.error("Erro ao verificar status:", error);
       setRunning(false);
@@ -53,6 +67,13 @@ export default function SystemControl() {
 
   const handleStart = async () => {
     setLoading(true);
+    setConnecting(true);
+
+    // Timeout de 10 segundos para connecting
+    connectingTimeoutRef.current = setTimeout(() => {
+      setConnecting(false);
+    }, 10000);
+
     try {
       const response = await fetch("/api/modbus/control", {
         method: "POST",
@@ -63,11 +84,23 @@ export default function SystemControl() {
       const data = await response.json();
       if (data.success) {
         setRunning(true);
+        setConnecting(false);
+        if (connectingTimeoutRef.current) {
+          clearTimeout(connectingTimeoutRef.current);
+        }
       } else {
         alert(`Erro ao iniciar: ${data.error}`);
+        setConnecting(false);
+        if (connectingTimeoutRef.current) {
+          clearTimeout(connectingTimeoutRef.current);
+        }
       }
     } catch (error: any) {
       alert(`Erro ao iniciar sistema: ${error.message}`);
+      setConnecting(false);
+      if (connectingTimeoutRef.current) {
+        clearTimeout(connectingTimeoutRef.current);
+      }
     } finally {
       setLoading(false);
     }
@@ -75,6 +108,12 @@ export default function SystemControl() {
 
   const handleStop = async () => {
     setLoading(true);
+
+    // Limpar timeout se existir
+    if (connectingTimeoutRef.current) {
+      clearTimeout(connectingTimeoutRef.current);
+    }
+
     try {
       const response = await fetch("/api/modbus/control", {
         method: "POST",
@@ -86,11 +125,14 @@ export default function SystemControl() {
       if (data.success) {
         setRunning(false);
         setCleaningMode(false);
+        setConnecting(false);
       } else {
         alert(`Erro ao parar: ${data.error}`);
+        setConnecting(false);
       }
     } catch (error: any) {
       alert(`Erro ao parar sistema: ${error.message}`);
+      setConnecting(false);
     } finally {
       setLoading(false);
     }
@@ -123,21 +165,47 @@ export default function SystemControl() {
       </h2>
 
       <div className="flex gap-4">
-        <button
-          onClick={handleStart}
-          disabled={running || loading}
-          className={cn(
-            "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
-            "disabled:opacity-50 disabled:cursor-not-allowed",
-            running
-              ? "bg-gray-100 text-gray-400"
-              : "bg-green-600 text-white hover:bg-green-700 active:scale-95",
-          )}
-        >
-          <PlayIcon className="w-5 h-5" />
-          {loading && !running ? "Iniciando..." : "Iniciar Sistema"}
-        </button>
+        {/* Botão Iniciar/Abortar */}
+        {!running && !connecting ? (
+          <button
+            onClick={handleStart}
+            disabled={loading}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+              "disabled:opacity-50 disabled:cursor-not-allowed",
+              "bg-green-600 text-white hover:bg-green-700 active:scale-95",
+            )}
+          >
+            <PlayIcon className="w-5 h-5" />
+            {loading ? "Iniciando..." : "Iniciar Sistema"}
+          </button>
+        ) : connecting ? (
+          <button
+            onClick={handleStop}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all animate-pulse",
+              "bg-orange-600 text-white hover:bg-orange-700 active:scale-95",
+            )}
+          >
+            <StopIcon className="w-5 h-5" />
+            ⚠️ Abortar Conexão
+          </button>
+        ) : (
+          <button
+            onClick={handleStart}
+            disabled={loading}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+              "disabled:opacity-50 disabled:cursor-not-allowed",
+              "bg-gray-100 text-gray-400",
+            )}
+          >
+            <PlayIcon className="w-5 h-5" />
+            Iniciar Sistema
+          </button>
+        )}
 
+        {/* Botão Parar */}
         <button
           onClick={handleStop}
           disabled={!running || loading}
@@ -152,7 +220,6 @@ export default function SystemControl() {
           <StopIcon className="w-5 h-5" />
           {loading && running ? "Parando..." : "Parar Sistema"}
         </button>
-
 
         {/* Botão Modo Fachina */}
         <button

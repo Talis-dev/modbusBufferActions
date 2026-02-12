@@ -6,11 +6,13 @@ import { SystemConfig } from "@/types";
 
 export const defaultConfig: SystemConfig = {
   // Modbus Slave (leitura de pulsos de entrada)
+  slaveMode: "client", // client = conecta no slave | server = aguarda conexão
   slaveIp: "192.168.5.254",
   slavePort: 504,
   slaveTimeout: 5000,
 
   // Modbus CLP (escrita de comandos)
+  clpMode: "server", // client = conecta no CLP | server = aguarda conexão do CLP
   clpIp: "192.168.5.25",
   clpPort: 504,
   clpTimeout: 5000,

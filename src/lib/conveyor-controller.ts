@@ -12,7 +12,8 @@ export class ConveyorController {
   private queueManager: QueueManager;
   private running: boolean = false;
   private cycleInterval: NodeJS.Timeout | null = null;
-  private modbusServer: ModbusServer | null = null;
+  private modbusServer: ModbusServer | null = null; // Servidor para CLP
+  private slavePoolServer: ModbusServer | null = null; // Servidor para Slave Pool
   private lastErrorLog: number = 0;
   private errorCount: number = 0;
   private firstErrorTime?: number;
@@ -49,33 +50,64 @@ export class ConveyorController {
     }
 
     try {
-      // Conecta ao Slave Pool para ler pulsos de produtos
-      const slaveClient = modbusManager.getSlaveClient(
-        this.config.slaveIp,
-        this.config.slavePort,
-        this.config.slaveTimeout,
-      );
+      // CONEXÃO SLAVE POOL - Configurável (Client ou Server)
+      if (this.config.slaveMode === "client") {
+        // Modo Client: Conecta ao Slave Pool
+        const slaveClient = modbusManager.getSlaveClient(
+          this.config.slaveIp,
+          this.config.slavePort,
+          this.config.slaveTimeout,
+        );
+        await slaveClient.connect();
+        console.log(
+          `[Controller] Conectado ao Slave Pool (Client) ${this.config.slaveIp}:${this.config.slavePort}`,
+        );
+      } else {
+        // Modo Server: Aguarda Slave Pool conectar
+        if (!this.slavePoolServer) {
+          this.slavePoolServer = new ModbusServer(this.config.slavePort);
+        }
+        await this.slavePoolServer.start();
+        console.log(
+          `[Controller] ✅ Servidor Slave Pool iniciado na porta ${this.config.slavePort}`,
+        );
+        console.log(
+          `[Controller] Aguardando Slave Pool conectar em 0.0.0.0:${this.config.slavePort}`,
+        );
+      }
 
-      await slaveClient.connect();
-      // Reconexão automática já está embutida no cliente
+      // CONEXÃO CLP - Configurável (Client ou Server)
+      if (this.config.clpMode === "server") {
+        // Modo Server: Aguarda CLP conectar
+        this.modbusServer = new ModbusServer(this.config.clpPort);
+        await this.modbusServer.start();
 
-      // Inicia servidor Modbus Slave para o CLP conectar
-      this.modbusServer = new ModbusServer(this.config.clpPort);
-      await this.modbusServer.start();
+        // Configura tempos de motor ativo nos holding registers
+        const engineDurations = this.config.outputs.map(
+          (output) => output.activeEngineDuration,
+        );
+        this.modbusServer.setEngineActiveDurations(engineDurations);
 
-      // Configura tempos de motor ativo nos holding registers para o CLP ler
-      const engineDurations = this.config.outputs.map(
-        (output) => output.activeEngineDuration,
-      );
-      this.modbusServer.setEngineActiveDurations(engineDurations);
+        console.log(
+          `[Controller] Aguardando CLP conectar (Server) na porta ${this.config.clpPort}`,
+        );
+      } else {
+        // Modo Client: Conecta no CLP
+        const clpClient = modbusManager.getCLPClient(
+          this.config.clpIp,
+          this.config.clpPort,
+          this.config.clpTimeout,
+        );
+        await clpClient.connect();
+        console.log(
+          `[Controller] Conectado ao CLP (Client) ${this.config.clpIp}:${this.config.clpPort}`,
+        );
+      }
 
       this.running = true;
       this.startCycle();
 
       console.log("[Controller] Sistema iniciado com sucesso");
-      console.log(
-        `[Controller] Aguardando conexão do CLP na porta ${this.config.clpPort}`,
-      );
       return true;
     } catch (error: any) {
       console.error("[Controller] Erro ao iniciar sistema:", error.message);
@@ -96,10 +128,16 @@ export class ConveyorController {
       this.cycleInterval = null;
     }
 
-    // Para o servidor Modbus e aguarda fechar
+    // Para o servidor Modbus CLP e aguarda fechar
     if (this.modbusServer) {
       await this.modbusServer.stop();
       this.modbusServer = null;
+    }
+
+    // Para o servidor Modbus Slave Pool e aguarda fechar
+    if (this.slavePoolServer) {
+      await this.slavePoolServer.stop();
+      this.slavePoolServer = null;
     }
 
     modbusManager.disconnectAll();
@@ -193,43 +231,64 @@ export class ConveyorController {
    * Lê os sensores de entrada (pulsos Modbus do Slave)
    */
   private async readInputSensors(): Promise<void> {
-    const slaveClient = modbusManager.getSlaveClient(
-      this.config.slaveIp,
-      this.config.slavePort,
-      this.config.slaveTimeout,
-    );
-
-    if (!slaveClient.isConnected()) return;
-
     try {
-      // Lê as coils dos sensores de entrada
-      const startAddress = Math.min(
-        ...this.config.inputSensors.map((s) => s.address),
-      );
-      const quantity = this.config.inputSensors.length;
+      let coilsData: boolean[] = [];
 
-      // Valida endereços antes de ler
-      if (startAddress < 0 || quantity <= 0 || quantity > 2000) {
-        this.handleReadError(
-          `Endereços inválidos: start=${startAddress}, quantity=${quantity}`,
+      // Determina de onde ler baseado no modo
+      if (this.config.slaveMode === "server") {
+        // Modo Server: lê dos buffers do próprio servidor
+        if (!this.slavePoolServer) return;
+
+        // Lê cada coil individualmente do buffer do servidor
+        const startAddress = Math.min(
+          ...this.config.inputSensors.map((s) => s.address),
         );
-        return;
-      }
+        const quantity = this.config.inputSensors.length;
 
-      const response = await slaveClient.readCoils(startAddress, quantity);
-
-      if (!response.success || !response.coils) {
-        this.handleReadError(
-          `Falha ao ler sensores (addr: ${startAddress}, qty: ${quantity})`,
+        for (let i = 0; i < quantity; i++) {
+          const coilValue = this.slavePoolServer.readCoil(startAddress + i);
+          coilsData.push(coilValue);
+        }
+      } else {
+        // Modo Client: lê do cliente Modbus conectado ao Slave Pool
+        const slaveClient = modbusManager.getSlaveClient(
+          this.config.slaveIp,
+          this.config.slavePort,
+          this.config.slaveTimeout,
         );
-        return;
+
+        if (!slaveClient.isConnected()) return;
+
+        const startAddress = Math.min(
+          ...this.config.inputSensors.map((s) => s.address),
+        );
+        const quantity = this.config.inputSensors.length;
+
+        // Valida endereços antes de ler
+        if (startAddress < 0 || quantity <= 0 || quantity > 2000) {
+          this.handleReadError(
+            `Endereços inválidos: start=${startAddress}, quantity=${quantity}`,
+          );
+          return;
+        }
+
+        const response = await slaveClient.readCoils(startAddress, quantity);
+
+        if (!response.success || !response.coils) {
+          this.handleReadError(
+            `Falha ao ler sensores (addr: ${startAddress}, qty: ${quantity})`,
+          );
+          return;
+        }
+
+        coilsData = response.coils;
       }
 
       // Sucesso - reseta contador de erros
       this.resetErrorCounter();
 
       // Detecta pulsos (transição de 0 para 1)
-      response.coils.forEach((currentState, index) => {
+      coilsData.forEach((currentState, index) => {
         const previousState = this.lastInputStates[index] || false;
 
         // Detectou pulso (borda de subida)
@@ -247,41 +306,72 @@ export class ConveyorController {
       });
 
       // Atualiza estados
-      this.lastInputStates = response.coils;
+      this.lastInputStates = coilsData;
     } catch (error: any) {
       this.handleReadError(error.message || "Erro desconhecido");
     }
   }
 
   /**
-   * Envia comandos de ativação para o CLP (escrevendo no servidor Modbus Slave)
+   * Envia comandos de ativação para o CLP
    */
   private async writeOutputCommands(
     activations: Map<number, boolean>,
   ): Promise<void> {
-    if (!this.modbusServer) return;
-
     try {
-      // Escreve nos coils do servidor Modbus para o CLP ler
-      for (const output of this.config.outputs) {
-        const shouldActivate = activations.get(output.id) || false;
+      // Determina como escrever baseado no modo CLP
+      if (this.config.clpMode === "server") {
+        // Modo Server: sistema aguarda CLP conectar, escreve nos buffers do servidor
+        if (!this.modbusServer) return;
 
-        // Escreve no endereço de saída (coil 6-11)
-        this.modbusServer.writeCoil(output.outputAddress, shouldActivate);
+        for (const output of this.config.outputs) {
+          const shouldActivate = activations.get(output.id) || false;
+          this.modbusServer.writeCoil(output.outputAddress, shouldActivate);
 
-        // Atualiza estado do sensor
-        const sensor = this.outputSensors.get(output.id);
-        if (sensor) {
-          const wasActivated = sensor.activated;
-          sensor.activated = shouldActivate;
+          // Atualiza estado do sensor
+          const sensor = this.outputSensors.get(output.id);
+          if (sensor) {
+            const wasActivated = sensor.activated;
+            sensor.activated = shouldActivate;
 
-          // Loga apenas na primeira ativação (não a cada ciclo)
-          if (shouldActivate && !wasActivated) {
-            const pulseDuration = output.pulseDuration || 500;
-            sensor.lastActivation = Date.now();
-            console.log(
-              `[Controller] ➡️ Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
-            );
+            if (shouldActivate && !wasActivated) {
+              const pulseDuration = output.pulseDuration || 500;
+              sensor.lastActivation = Date.now();
+              console.log(
+                `[Controller] ➡️ Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
+              );
+            }
+          }
+        }
+      } else {
+        // Modo Client: sistema conecta ao CLP, escreve via cliente
+        const clpClient = modbusManager.getCLPClient(
+          this.config.clpIp,
+          this.config.clpPort,
+          this.config.clpTimeout,
+        );
+
+        if (!clpClient.isConnected()) return;
+
+        for (const output of this.config.outputs) {
+          const shouldActivate = activations.get(output.id) || false;
+
+          // Escreve via cliente Modbus
+          await clpClient.writeSingleCoil(output.outputAddress, shouldActivate);
+
+          // Atualiza estado do sensor
+          const sensor = this.outputSensors.get(output.id);
+          if (sensor) {
+            const wasActivated = sensor.activated;
+            sensor.activated = shouldActivate;
+
+            if (shouldActivate && !wasActivated) {
+              const pulseDuration = output.pulseDuration || 500;
+              sensor.lastActivation = Date.now();
+              console.log(
+                `[Controller] ➡️ Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
+              );
+            }
           }
         }
       }
@@ -302,13 +392,39 @@ export class ConveyorController {
 
     const stats = this.queueManager.getStats();
 
-    // CLP só está "conectado" se o servidor tem clientes conectados
-    const clpConnected = this.modbusServer?.hasClients() || false;
+    // Slave Pool conectado depende do modo:
+    // - Modo Server: verifica se tem clientes conectados
+    // - Modo Client: verifica se o cliente está conectado
+    let slaveConnected = false;
+    if (this.config.slaveMode === "server") {
+      slaveConnected = this.slavePoolServer?.hasClients() || false;
+    } else {
+      // Modo client: verificar se o cliente Slave está conectado
+      slaveConnected = slaveClient.isConnected();
+    }
+
+    // CLP conectado depende do modo:
+    // - Modo Server: verifica se tem clientes conectados
+    // - Modo Client: verifica se o cliente está conectado
+    let clpConnected = false;
+    if (this.config.clpMode === "server") {
+      clpConnected = this.modbusServer?.hasClients() || false;
+    } else {
+      // Modo client: verificar se o cliente CLP está conectado
+      const clpClient = modbusManager.getCLPClient(
+        this.config.clpIp,
+        this.config.clpPort,
+        this.config.clpTimeout,
+      );
+      clpConnected = clpClient.isConnected();
+    }
 
     return {
       connected: this.running,
-      slaveConnected: slaveClient.isConnected(),
+      slaveConnected: slaveConnected,
       clpConnected: clpConnected,
+      slaveMode: this.config.slaveMode,
+      clpMode: this.config.clpMode,
       cleaningMode: this.cleaningMode,
       queues: this.queueManager.getAllQueues(),
       sensors: Array.from(this.outputSensors.values()),
@@ -333,7 +449,7 @@ export class ConveyorController {
     this.config = config;
     // Reinicializa o queue manager com as novas configurações
     this.queueManager = new QueueManager(config.outputs);
-    
+
     // Atualiza tempos de motor ativo nos holding registers
     if (this.modbusServer) {
       const engineDurations = config.outputs.map(
@@ -341,7 +457,7 @@ export class ConveyorController {
       );
       this.modbusServer.setEngineActiveDurations(engineDurations);
     }
-    
+
     console.log("[Controller] Configuração atualizada");
   }
 
@@ -349,17 +465,40 @@ export class ConveyorController {
    * Alterna o modo fachina (limpeza)
    */
   toggleCleaningMode(): boolean {
-    if (!this.modbusServer || !this.running) {
-      console.warn("[Controller] Não é possível alternar modo fachina - sistema não está rodando");
+    if (!this.running) {
+      console.warn(
+        "[Controller] Não é possível alternar modo fachina - sistema não está rodando",
+      );
       return false;
     }
 
     this.cleaningMode = !this.cleaningMode;
-    
-    // Escreve no coil configurado
-    this.modbusServer.writeCoil(this.config.cleaningModeCoil, this.cleaningMode);
-    
-    console.log(`[Controller] Modo fachina ${this.cleaningMode ? "ATIVADO" : "DESATIVADO"}`);
+
+    // Escreve no coil configurado baseado no modo CLP
+    if (this.config.clpMode === "server") {
+      // Modo Server: escreve nos buffers do servidor
+      if (!this.modbusServer) return false;
+      this.modbusServer.writeCoil(
+        this.config.cleaningModeCoil,
+        this.cleaningMode,
+      );
+    } else {
+      // Modo Client: escreve via cliente
+      const clpClient = modbusManager.getCLPClient(
+        this.config.clpIp,
+        this.config.clpPort,
+        this.config.clpTimeout,
+      );
+      if (!clpClient.isConnected()) return false;
+      clpClient.writeSingleCoil(
+        this.config.cleaningModeCoil,
+        this.cleaningMode,
+      );
+    }
+
+    console.log(
+      `[Controller] Modo fachina ${this.cleaningMode ? "ATIVADO" : "DESATIVADO"}`,
+    );
     return this.cleaningMode;
   }
 

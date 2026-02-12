@@ -63,11 +63,13 @@ export interface OutputSensor {
  */
 export interface SystemConfig {
   // Modbus Slave (leitura de pulsos)
+  slaveMode: 'client' | 'server'; // Modo de conexão: client (conecta) ou server (aguarda)
   slaveIp: string;
   slavePort: number;
   slaveTimeout: number;
 
   // Modbus Master/CLP (escrita de comandos)
+  clpMode: 'client' | 'server'; // Modo de conexão: client (conecta) ou server (aguarda)
   clpIp: string;
   clpPort: number;
   clpTimeout: number;
@@ -99,6 +101,8 @@ export interface SystemState {
   connected: boolean;
   slaveConnected: boolean;
   clpConnected: boolean;
+  slaveMode: "client" | "server"; // Modo de conexão do Slave Pool
+  clpMode: "client" | "server"; // Modo de conexão do CLP
   cleaningMode: boolean; // Modo fachina ativo
   queues: OutputQueue[];
   sensors: OutputSensor[];

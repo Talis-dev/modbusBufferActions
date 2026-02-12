@@ -86,7 +86,10 @@ export default function ConveyorMonitor() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-gray-700">Slave Modbus</span>
+            <span className="font-medium text-gray-700">
+              Slave Pool (
+              {systemState.slaveMode === "server" ? "Server" : "Client"})
+            </span>
             {systemState.slaveConnected ? (
               <CheckCircleIcon className="w-6 h-6 text-green-600" />
             ) : (
@@ -112,7 +115,9 @@ export default function ConveyorMonitor() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-gray-700">CLP Modbus</span>
+            <span className="font-medium text-gray-700">
+              CLP ({systemState.clpMode === "server" ? "Server" : "Client"})
+            </span>
             {systemState.clpConnected ? (
               <CheckCircleIcon className="w-6 h-6 text-green-600" />
             ) : (

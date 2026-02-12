@@ -14,14 +14,22 @@ interface SystemLog {
 
 export default function TestCLPPage() {
   const [serverRunning, setServerRunning] = useState(false);
+  const [testMode, setTestMode] = useState<"server" | "client">("server");
+  const [currentMode, setCurrentMode] = useState<"server" | "client" | null>(null);
   const [port, setPort] = useState(502);
+  const [host, setHost] = useState("192.168.3.115");
   const [serverIp, setServerIp] = useState("0.0.0.0");
   const [uptime, setUptime] = useState(0);
   const [hasClients, setHasClients] = useState(false);
+  const [connected, setConnected] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [connecting, setConnecting] = useState(false);
   const [history, setHistory] = useState<any[]>([]);
   const [selectedCoil, setSelectedCoil] = useState(0);
   const [duration, setDuration] = useState(1000);
+  const [coilValues, setCoilValues] = useState<boolean[]>([]);
+  const [quickAccessMode, setQuickAccessMode] = useState<"pulse" | "toggle">("pulse");
+  const [toggledCoils, setToggledCoils] = useState<Set<number>>(new Set());
   const [logs, setLogs] = useState<SystemLog[]>([]);
   const [logsPaused, setLogsPaused] = useState(true); // Iniciar pausado
   const [mainSystemRunning, setMainSystemRunning] = useState(false);
@@ -41,7 +49,22 @@ export default function TestCLPPage() {
         fetchLogs();
       }
     }, 1000);
-    return () => clearInterval(interval);
+
+    // Cleanup: desconectar quando página for desmontada ou recarregada
+    return () => {
+      clearInterval(interval);
+      
+      // Se estava rodando, desconectar
+      if (serverRunning) {
+        fetch("/api/modbus/test-clp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "stop" }),
+        }).catch(() => {
+          // Ignora erros ao desconectar durante unmount
+        });
+      }
+    };
   }, [logsPaused]);
 
   const fetchStatus = async () => {
@@ -49,9 +72,20 @@ export default function TestCLPPage() {
       const response = await fetch("/api/modbus/test-clp");
       const data = await response.json();
       setServerRunning(data.running);
+      setCurrentMode(data.mode);
       setUptime(data.uptime || 0);
       setHasClients(data.hasClients || false);
+      setConnected(data.connected || false);
       setHistory(data.history || []);
+
+      // Se está rodando e conectado (mode client), desabilitar connecting
+      if (data.running && data.mode === "client" && data.connected) {
+        setConnecting(false);
+      }
+      // Se está rodando em mode server, desabilitar connecting
+      if (data.running && data.mode === "server") {
+        setConnecting(false);
+      }
     } catch (error) {
       console.error("Erro ao buscar status:", error);
     }
@@ -91,20 +125,30 @@ export default function TestCLPPage() {
 
   const startServer = async () => {
     setLoading(true);
+    setConnecting(true);
     try {
       const response = await fetch("/api/modbus/test-clp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "start", port }),
+        body: JSON.stringify({ 
+          action: "start", 
+          mode: testMode,
+          port,
+          host: testMode === "client" ? host : undefined,
+        }),
       });
       const data = await response.json();
       if (data.success) {
         setServerRunning(true);
+        setCurrentMode(data.mode);
+        setConnecting(false);
       } else {
         alert(`Erro: ${data.error}`);
+        setConnecting(false);
       }
     } catch (error: any) {
       alert(`Erro: ${error.message}`);
+      setConnecting(false);
     } finally {
       setLoading(false);
     }
@@ -121,6 +165,9 @@ export default function TestCLPPage() {
       const data = await response.json();
       if (data.success) {
         setServerRunning(false);
+        setCurrentMode(null);
+        setConnecting(false);
+        setConnected(false);
       } else {
         alert(`Erro: ${data.error}`);
       }
@@ -128,6 +175,28 @@ export default function TestCLPPage() {
       alert(`Erro: ${error.message}`);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const readCoils = async () => {
+    try {
+      const response = await fetch("/api/modbus/test-clp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "read",
+          coilAddress: selectedCoil,
+          value: 10, // Ler 10 coils
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setCoilValues(data.values || []);
+      } else {
+        alert(`Erro: ${data.error}`);
+      }
+    } catch (error: any) {
+      alert(`Erro: ${error.message}`);
     }
   };
 
@@ -148,6 +217,61 @@ export default function TestCLPPage() {
       }
     } catch (error: any) {
       alert(`Erro: ${error.message}`);
+    }
+  };
+
+  // Envia pulso direto sem depender do input
+  const sendPulseDirect = async (coil: number, pulseDuration: number) => {
+    try {
+      const response = await fetch("/api/modbus/test-clp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "pulse",
+          coilAddress: coil,
+          value: pulseDuration,
+        }),
+      });
+      const data = await response.json();
+      if (!data.success) {
+        console.error(`Erro ao enviar pulso no coil ${coil}: ${data.error}`);
+      }
+    } catch (error: any) {
+      console.error(`Erro ao enviar pulso: ${error.message}`);
+    }
+  };
+
+  // Faz toggle direto de um coil
+  const toggleCoilDirect = async (coil: number) => {
+    const isOn = toggledCoils.has(coil);
+    const newState = !isOn;
+
+    try {
+      const response = await fetch("/api/modbus/test-clp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "set",
+          coilAddress: coil,
+          value: newState,
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setToggledCoils((prev) => {
+          const newSet = new Set(prev);
+          if (newState) {
+            newSet.add(coil);
+          } else {
+            newSet.delete(coil);
+          }
+          return newSet;
+        });
+      } else {
+        console.error(`Erro ao fazer toggle no coil ${coil}: ${data.error}`);
+      }
+    } catch (error: any) {
+      console.error(`Erro ao fazer toggle: ${error.message}`);
     }
   };
 
@@ -237,7 +361,7 @@ export default function TestCLPPage() {
               </div>
 
               {/* Status Badges */}
-              <div className="flex gap-3 mb-6">
+              <div className="flex gap-3 mb-6 flex-wrap">
                 <div
                   className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
                     serverRunning
@@ -253,6 +377,15 @@ export default function TestCLPPage() {
                   </span>
                 </div>
 
+                {serverRunning && currentMode && (
+                  <div className="px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/50 flex items-center gap-2">
+                    <span className="text-lg">{currentMode === "server" ? "🖥️" : "🔌"}</span>
+                    <span className="text-sm font-medium">
+                      Modo: {currentMode === "server" ? "Servidor" : "Cliente"}
+                    </span>
+                  </div>
+                )}
+
                 {serverRunning && (
                   <>
                     <div className="px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/50 flex items-center gap-2">
@@ -262,18 +395,35 @@ export default function TestCLPPage() {
                       </span>
                     </div>
 
-                    <div
-                      className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
-                        hasClients
-                          ? "bg-green-500/20 border border-green-500/50"
-                          : "bg-yellow-500/20 border border-yellow-500/50"
-                      }`}
-                    >
-                      <span className="text-lg">🔌</span>
-                      <span className="text-sm font-medium">
-                        {hasClients ? "CLP Conectado" : "Aguardando CLP"}
-                      </span>
-                    </div>
+                    {currentMode === "server" && (
+                      <div
+                        className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
+                          hasClients
+                            ? "bg-green-500/20 border border-green-500/50"
+                            : "bg-yellow-500/20 border border-yellow-500/50"
+                        }`}
+                      >
+                        <span className="text-lg">🔌</span>
+                        <span className="text-sm font-medium">
+                          {hasClients ? "CLP Conectado" : "Aguardando CLP"}
+                        </span>
+                      </div>
+                    )}
+
+                    {currentMode === "client" && (
+                      <div
+                        className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
+                          connected
+                            ? "bg-green-500/20 border border-green-500/50"
+                            : "bg-red-500/20 border border-red-500/50"
+                        }`}
+                      >
+                        <span className="text-lg">🔌</span>
+                        <span className="text-sm font-medium">
+                          {connected ? "Conectado ao CLP" : "Desconectado"}
+                        </span>
+                      </div>
+                    )}
                   </>
                 )}
               </div>
@@ -297,6 +447,60 @@ export default function TestCLPPage() {
                 </div>
               )}
 
+              {/* Seletor de Modo */}
+              <div className="mb-6">
+                <label className="block text-sm text-gray-400 mb-2">
+                  Modo de Teste
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => setTestMode("server")}
+                    disabled={serverRunning}
+                    className={`px-4 py-3 rounded-lg border-2 transition-all disabled:opacity-50 ${
+                      testMode === "server"
+                        ? "border-green-500 bg-green-500/20 text-green-300"
+                        : "border-slate-600 bg-slate-900/50 text-gray-400 hover:border-slate-500"
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">🖥️</div>
+                    <div className="font-semibold">Servidor</div>
+                    <div className="text-xs opacity-75">Aguardar CLP conectar</div>
+                  </button>
+                  <button
+                    onClick={() => setTestMode("client")}
+                    disabled={serverRunning}
+                    className={`px-4 py-3 rounded-lg border-2 transition-all disabled:opacity-50 ${
+                      testMode === "client"
+                        ? "border-blue-500 bg-blue-500/20 text-blue-300"
+                        : "border-slate-600 bg-slate-900/50 text-gray-400 hover:border-slate-500"
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">🔌</div>
+                    <div className="font-semibold">Cliente</div>
+                    <div className="text-xs opacity-75">Conectar ao CLP</div>
+                  </button>
+                </div>
+              </div>
+
+              {/* Host (apenas para modo client) */}
+              {testMode === "client" && (
+                <div className="mb-6">
+                  <label className="block text-sm text-gray-400 mb-2">
+                    IP do CLP (Servidor)
+                  </label>
+                  <input
+                    type="text"
+                    value={host}
+                    onChange={(e) => setHost(e.target.value)}
+                    disabled={serverRunning}
+                    className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white text-lg font-mono disabled:opacity-50 focus:outline-none focus:border-blue-500"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    IP do CLP em modo servidor
+                  </p>
+                </div>
+              )}
+
               {/* Porta Modbus */}
               <div className="mb-6">
                 <label className="block text-sm text-gray-400 mb-2">
@@ -310,9 +514,11 @@ export default function TestCLPPage() {
                   className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white text-lg font-mono disabled:opacity-50 focus:outline-none focus:border-blue-500"
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  Porta TCP onde o CLP irá conectar
+                  {testMode === "server" 
+                    ? "Porta TCP onde o CLP irá conectar"
+                    : "Porta TCP do CLP servidor"}
                 </p>
-                {serverRunning && (
+                {serverRunning && testMode === "server" && (
                   <div className="mt-3 bg-blue-500/10 border border-blue-500/50 rounded-lg p-3">
                     <p className="text-xs text-gray-400 mb-1">
                       Configure no CLP:
@@ -324,28 +530,51 @@ export default function TestCLPPage() {
                     </p>
                   </div>
                 )}
+                {serverRunning && testMode === "client" && (
+                  <div className="mt-3 bg-green-500/10 border border-green-500/50 rounded-lg p-3">
+                    <p className="text-xs text-gray-400 mb-1">
+                      Conectado em:
+                    </p>
+                    <p className="text-sm font-mono text-green-400 font-semibold">
+                      {host}:{port}
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Botões */}
               <div className="flex gap-3">
-                <button
-                  onClick={startServer}
-                  disabled={loading || serverRunning || mainSystemRunning}
-                  className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
-                >
-                  <span className="text-xl">▶</span>
-                  {mainSystemRunning
-                    ? "Sistema Principal Ativo"
-                    : "Iniciar Servidor"}
-                </button>
-                <button
-                  onClick={stopServer}
-                  disabled={loading || !serverRunning}
-                  className="bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
-                >
-                  <span className="text-xl">⏹</span>
-                  Parar
-                </button>
+                {!serverRunning && !connecting ? (
+                  <button
+                    onClick={startServer}
+                    disabled={loading || mainSystemRunning}
+                    className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  >
+                    <span className="text-xl">▶</span>
+                    {mainSystemRunning
+                      ? "Sistema Principal Ativo"
+                      : testMode === "server"
+                      ? "Iniciar Servidor"
+                      : "Conectar ao CLP"}
+                  </button>
+                ) : connecting ? (
+                  <button
+                    onClick={stopServer}
+                    className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 animate-pulse"
+                  >
+                    <span className="text-xl">⚠️</span>
+                    Abortar Conexão
+                  </button>
+                ) : (
+                  <button
+                    onClick={stopServer}
+                    disabled={loading}
+                    className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  >
+                    <span className="text-xl">⏹</span>
+                    {testMode === "server" ? "Parar Servidor" : "Desconectar"}
+                  </button>
+                )}
               </div>
             </div>
 
@@ -395,29 +624,81 @@ export default function TestCLPPage() {
               </button>
 
               <div className="mt-6 pt-6 border-t border-slate-700">
-                <h3 className="text-sm text-gray-400 mb-3">Acesso Rápido</h3>
-                <div className="grid grid-cols-6 gap-2">
-                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((coil) => (
-                    <button
-                      key={coil}
-                      onClick={() => {
-                        setSelectedCoil(coil);
-                        setTimeout(sendPulse, 100);
-                      }}
-                      disabled={!serverRunning}
-                      className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-700 disabled:opacity-50 text-white font-mono py-2 rounded transition-colors text-sm"
-                    >
-                      {coil}
-                    </button>
-                  ))}
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm text-gray-400">Acesso Rápido</h3>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={quickAccessMode === "toggle"}
+                      onChange={(e) =>
+                        setQuickAccessMode(e.target.checked ? "toggle" : "pulse")
+                      }
+                      className="w-4 h-4 rounded border-slate-600 bg-slate-900 text-purple-600 focus:ring-purple-500"
+                    />
+                    <span className="text-xs text-gray-400">
+                      Modo Toggle {quickAccessMode === "toggle" && "✓"}
+                    </span>
+                  </label>
                 </div>
+                <div className="grid grid-cols-6 gap-2">
+                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((coil) => {
+                    const isToggled = toggledCoils.has(coil);
+                    return (
+                      <button
+                        key={coil}
+                        onClick={() => {
+                          if (quickAccessMode === "toggle") {
+                            toggleCoilDirect(coil);
+                          } else {
+                            sendPulseDirect(coil, duration);
+                          }
+                        }}
+                        disabled={!serverRunning}
+                        className={`${
+                          quickAccessMode === "toggle" && isToggled
+                            ? "bg-green-600 hover:bg-green-700"
+                            : "bg-purple-600 hover:bg-purple-700"
+                        } disabled:bg-gray-700 disabled:opacity-50 text-white font-mono py-2 rounded transition-colors text-sm`}
+                      >
+                        {coil}
+                      </button>
+                    );
+                  })}
+                </div>
+                {quickAccessMode === "pulse" && (
+                  <p className="text-xs text-gray-500 mt-2">
+                    Clique para enviar pulso de {duration}ms
+                  </p>
+                )}
+                {quickAccessMode === "toggle" && (
+                  <>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Verde = ON | Roxo = OFF | Clique para alternar
+                    </p>
+                    {toggledCoils.size > 0 && (
+                      <button
+                        onClick={async () => {
+                          // Desligar todos os coils toggleados
+                          for (const coil of Array.from(toggledCoils)) {
+                            await toggleCoilDirect(coil);
+                          }
+                        }}
+                        disabled={!serverRunning}
+                        className="w-full mt-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:opacity-50 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors"
+                      >
+                        🔴 Desligar Todos ({toggledCoils.size})
+                      </button>
+                    )}
+                  </>
+                )}
               </div>
             </div>
           </div>
 
           {/* Coluna Direita: Histórico */}
-          <div>
-            <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 h-full">
+          <div className="space-y-6">
+            {/* Card: Histórico de Eventos */}
+            <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="text-3xl">📋</div>
                 <h2 className="text-2xl font-semibold">Histórico de Eventos</h2>
@@ -458,6 +739,49 @@ export default function TestCLPPage() {
                 )}
               </div>
             </div>
+
+            {/* Card: Ler Coils (apenas modo client) */}
+            {currentMode === "client" && serverRunning && (
+              <div className="bg-slate-800/50 backdrop-blur border border-blue-700 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="text-3xl">📖</div>
+                  <h2 className="text-2xl font-semibold">Ler Coils do CLP</h2>
+                </div>
+
+                <button
+                  onClick={readCoils}
+                  disabled={!connected}
+                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-colors mb-4"
+                >
+                  🔍 Ler Coils {selectedCoil} - {selectedCoil + 9}
+                </button>
+
+                {coilValues.length > 0 && (
+                  <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-4">
+                    <h3 className="text-sm text-gray-400 mb-3">
+                      Valores Lidos (a partir do coil {selectedCoil})
+                    </h3>
+                    <div className="grid grid-cols-5 gap-2">
+                      {coilValues.map((value, index) => (
+                        <div
+                          key={index}
+                          className={`p-2 rounded text-center font-mono text-sm ${
+                            value
+                              ? "bg-green-500/20 border border-green-500 text-green-300"
+                              : "bg-gray-500/20 border border-gray-600 text-gray-400"
+                          }`}
+                        >
+                          <div className="text-xs opacity-75">
+                            #{selectedCoil + index}
+                          </div>
+                          <div className="font-bold">{value ? "ON" : "OFF"}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

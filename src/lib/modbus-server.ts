@@ -117,6 +117,10 @@ export class ModbusServer {
         });
 
         // Escuta em todas as interfaces (0.0.0.0) para aceitar conexões locais e remotas
+        systemLogger.info(
+          "Modbus Server",
+          `Tentando iniciar servidor na porta ${this.port}...`,
+        );
         this.netServer.listen(this.port, "0.0.0.0", () => {
           this.connected = true;
           connectionTracker.setServerInfo("0.0.0.0", this.port);

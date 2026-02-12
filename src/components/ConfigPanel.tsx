@@ -26,8 +26,17 @@ export default function ConfigPanel() {
     0, 0, 0, 0, 0, 0,
   ]);
 
+  // Uptime e restart
+  const [uptime, setUptime] = useState<string>("");
+  const [restarting, setRestarting] = useState(false);
+
   useEffect(() => {
     fetchConfig();
+    fetchUptime();
+
+    // Atualiza uptime a cada 10 segundos
+    const interval = setInterval(fetchUptime, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   const fetchConfig = async () => {
@@ -41,6 +50,53 @@ export default function ConfigPanel() {
       console.error("Erro ao buscar configuração:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchUptime = async () => {
+    try {
+      const response = await fetch("/api/system/restart");
+      const data = await response.json();
+      if (data.success) {
+        setUptime(data.uptime.formatted);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar uptime:", error);
+    }
+  };
+
+  const restartSystem = async () => {
+    if (
+      !confirm(
+        "Tem certeza que deseja reiniciar o sistema? Todas as conexões serão interrompidas.",
+      )
+    ) {
+      return;
+    }
+
+    setRestarting(true);
+    try {
+      const response = await fetch("/api/system/restart", {
+        method: "POST",
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert(
+          "Sistema reiniciando... A página será recarregada automaticamente.",
+        );
+
+        // Aguarda 3 segundos e recarrega a página
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      } else {
+        alert(`Erro: ${data.error}`);
+        setRestarting(false);
+      }
+    } catch (error: any) {
+      alert(`Erro ao reiniciar: ${error.message}`);
+      setRestarting(false);
     }
   };
 
@@ -132,11 +188,24 @@ export default function ConfigPanel() {
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <CogIcon className="w-6 h-6" />
-          Configuração do Sistema
-        </h2>
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+            <CogIcon className="w-6 h-6" />
+            Configuração do Sistema
+          </h2>
+          {uptime && (
+            <p className="text-sm text-gray-500 mt-1">Uptime: {uptime}</p>
+          )}
+        </div>
         <div className="flex gap-2">
+          <button
+            onClick={restartSystem}
+            disabled={restarting}
+            className="px-4 py-2 rounded-lg border border-red-300 text-red-700 hover:bg-red-50 flex items-center gap-2 transition-colors disabled:opacity-50"
+          >
+            <ArrowPathIcon className="w-4 h-4" />
+            {restarting ? "Reiniciando..." : "Reiniciar Sistema"}
+          </button>
           <Link
             href="/test-clp"
             className="px-4 py-2 rounded-lg border border-purple-300 text-purple-700 hover:bg-purple-50 flex items-center gap-2 transition-colors"
@@ -168,58 +237,125 @@ export default function ConfigPanel() {
           <h3 className="text-lg font-semibold text-gray-800 mb-3">
             Conexões Modbus
           </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                IP do Slave
-              </label>
-              <input
-                type="text"
-                value={config.slaveIp}
-                onChange={(e) =>
-                  setConfig({ ...config, slaveIp: e.target.value })
-                }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+
+          {/* Conexão Slave Pool */}
+          <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h4 className="text-md font-semibold text-blue-900 mb-3">
+              Conexão Slave Pool (Leitura de Sensores)
+            </h4>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Modo de Conexão
+                </label>
+                <select
+                  value={config.slaveMode}
+                  onChange={(e) =>
+                    setConfig({
+                      ...config,
+                      slaveMode: e.target.value as "client" | "server",
+                    })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                >
+                  <option value="client">
+                    Client (Conecta no dispositivo)
+                  </option>
+                  <option value="server">Server (Aguarda conexão)</option>
+                </select>
+                <p className="mt-1 text-xs text-gray-600">
+                  {config.slaveMode === "client"
+                    ? "💡 Sistema conecta no Slave Pool"
+                    : "💡 Slave Pool conecta no sistema"}
+                </p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  IP do Slave
+                </label>
+                <input
+                  type="text"
+                  value={config.slaveIp}
+                  onChange={(e) =>
+                    setConfig({ ...config, slaveIp: e.target.value })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Porta do Slave
+                </label>
+                <input
+                  type="number"
+                  value={config.slavePort}
+                  onChange={(e) =>
+                    setConfig({
+                      ...config,
+                      slavePort: parseInt(e.target.value),
+                    })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Porta do Slave
-              </label>
-              <input
-                type="number"
-                value={config.slavePort}
-                onChange={(e) =>
-                  setConfig({ ...config, slavePort: parseInt(e.target.value) })
-                }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                IP do CLP
-              </label>
-              <input
-                type="text"
-                value={config.clpIp}
-                onChange={(e) =>
-                  setConfig({ ...config, clpIp: e.target.value })
-                }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Porta do CLP
-              </label>
-              <input
-                type="number"
-                value={config.clpPort}
-                onChange={(e) =>
-                  setConfig({ ...config, clpPort: parseInt(e.target.value) })
-                }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+          </div>
+
+          {/* Conexão CLP */}
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <h4 className="text-md font-semibold text-green-900 mb-3">
+              Conexão CLP (Envio de Comandos)
+            </h4>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Modo de Conexão
+                </label>
+                <select
+                  value={config.clpMode}
+                  onChange={(e) =>
+                    setConfig({
+                      ...config,
+                      clpMode: e.target.value as "client" | "server",
+                    })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+                >
+                  <option value="client">Client (Conecta no CLP)</option>
+                  <option value="server">Server (Aguarda CLP conectar)</option>
+                </select>
+                <p className="mt-1 text-xs text-gray-600">
+                  {config.clpMode === "client"
+                    ? "💡 Sistema conecta no CLP"
+                    : "💡 CLP conecta no sistema"}
+                </p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  IP do CLP
+                </label>
+                <input
+                  type="text"
+                  value={config.clpIp}
+                  onChange={(e) =>
+                    setConfig({ ...config, clpIp: e.target.value })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Porta do CLP
+                </label>
+                <input
+                  type="number"
+                  value={config.clpPort}
+                  onChange={(e) =>
+                    setConfig({ ...config, clpPort: parseInt(e.target.value) })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
             </div>
           </div>
         </section>

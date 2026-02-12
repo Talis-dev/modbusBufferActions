@@ -4,68 +4,125 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { ModbusServer } from "@/lib/modbus-server";
+import { ModbusClient } from "@/lib/modbus-client";
 import { updateTestServerState, getTestServerState } from "@/lib/server-state";
 
 let testServer: ModbusServer | null = null;
+let testClient: ModbusClient | null = null;
+let testMode: "server" | "client" = "server";
 let testStartTime: number = 0;
 let testHistory: any[] = [];
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { action, port, coilAddress, value } = body;
+    const { action, port, mode, host, coilAddress, value } = body;
 
-    // Iniciar servidor de teste
+    // Iniciar teste (server ou client)
     if (action === "start") {
+      const testMode = mode || "server";
+      
       // Verificar estado persistente
       const savedState = getTestServerState();
-      if (testServer || savedState.running) {
+      if (testServer || testClient || savedState.running) {
         return NextResponse.json(
-          { error: "Servidor de teste já está rodando" },
+          { error: "Teste já está rodando" },
           { status: 400 },
         );
       }
 
-      testServer = new ModbusServer(port || 502);
-      await testServer.start();
-      testStartTime = Date.now();
-      testHistory = [];
+      if (testMode === "server") {
+        // Modo Server: Criar servidor e aguardar CLP conectar
+        testServer = new ModbusServer(port || 502);
+        await testServer.start();
+        testStartTime = Date.now();
+        testHistory = [];
 
-      // Salvar estado
-      updateTestServerState(true, port || 502, testStartTime);
+        // Salvar estado
+        updateTestServerState(true, port || 502, testStartTime);
 
-      testHistory.push({
-        timestamp: Date.now(),
-        action: "start",
-        message: `Servidor de teste iniciado na porta ${port || 502}`,
-      });
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "start",
+          mode: "server",
+          message: `Servidor de teste iniciado na porta ${port || 502}`,
+        });
 
-      return NextResponse.json({
-        success: true,
-        message: "Servidor de teste iniciado",
-        port: port || 502,
-      });
+        return NextResponse.json({
+          success: true,
+          mode: "server",
+          message: "Servidor de teste iniciado",
+          port: port || 502,
+        });
+      } else {
+        // Modo Client: Conectar ao CLP
+        const clpHost = host || "192.168.3.115";
+        const clpPort = port || 502;
+        
+        testClient = new ModbusClient(clpHost, clpPort, 5000);
+        const connected = await testClient.connect();
+        
+        if (!connected) {
+          testClient = null;
+          return NextResponse.json(
+            { error: `Falha ao conectar em ${clpHost}:${clpPort}` },
+            { status: 500 },
+          );
+        }
+
+        testStartTime = Date.now();
+        testHistory = [];
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "start",
+          mode: "client",
+          message: `Cliente conectado a ${clpHost}:${clpPort}`,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "client",
+          message: `Conectado a ${clpHost}:${clpPort}`,
+          host: clpHost,
+          port: clpPort,
+        });
+      }
     }
 
-    // Parar servidor de teste
+    // Parar teste
     if (action === "stop") {
-      if (!testServer) {
+      if (!testServer && !testClient) {
         return NextResponse.json(
-          { error: "Servidor de teste não está rodando" },
+          { error: "Teste não está rodando" },
           { status: 400 },
         );
       }
 
-      await testServer.stop();
       const uptime = Date.now() - testStartTime;
 
-      testHistory.push({
-        timestamp: Date.now(),
-        action: "stop",
-        message: `Servidor parado após ${(uptime / 1000).toFixed(1)}s`,
-      });
+      if (testServer) {
+        await testServer.stop();
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "stop",
+          mode: "server",
+          message: `Servidor parado após ${(uptime / 1000).toFixed(1)}s`,
+        });
+        testServer = null;
+      }
 
-      testServer = null;
+      if (testClient) {
+        testClient.disconnect();
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "stop",
+          mode: "client",
+          message: `Cliente desconectado após ${(uptime / 1000).toFixed(1)}s`,
+        });
+        testClient = null;
+      }
+
       testStartTime = 0;
 
       // Atualizar estado
@@ -73,93 +130,188 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({
         success: true,
-        message: "Servidor de teste parado",
+        message: "Teste parado",
         uptime,
       });
     }
 
     // Enviar pulso em um coil
     if (action === "pulse") {
-      if (!testServer) {
-        return NextResponse.json(
-          { error: "Servidor de teste não está rodando" },
-          { status: 400 },
-        );
-      }
-
       const address = parseInt(coilAddress);
       const duration = parseInt(value) || 1000;
 
-      // Liga coil
-      testServer.writeCoil(address, true);
+      if (testServer) {
+        // Modo Server: escrever no servidor local
+        testServer.writeCoil(address, true);
 
-      testHistory.push({
-        timestamp: Date.now(),
-        action: "pulse_start",
-        coil: address,
-        duration,
-        message: `Pulso iniciado no coil ${address} por ${duration}ms`,
-      });
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "pulse_start",
+          mode: "server",
+          coil: address,
+          duration,
+          message: `Pulso iniciado no coil ${address} por ${duration}ms`,
+        });
 
-      // Desliga depois do tempo
-      setTimeout(() => {
-        if (testServer) {
-          testServer.writeCoil(address, false);
-          testHistory.push({
-            timestamp: Date.now(),
-            action: "pulse_end",
-            coil: address,
-            message: `Pulso finalizado no coil ${address}`,
-          });
-        }
-      }, duration);
+        setTimeout(() => {
+          if (testServer) {
+            testServer.writeCoil(address, false);
+            testHistory.push({
+              timestamp: Date.now(),
+              action: "pulse_end",
+              mode: "server",
+              coil: address,
+              message: `Pulso finalizado no coil ${address}`,
+            });
+          }
+        }, duration);
 
-      return NextResponse.json({
-        success: true,
-        message: `Pulso de ${duration}ms enviado para coil ${address}`,
-        coil: address,
-        duration,
-        hasClients: testServer.hasClients(),
-      });
+        return NextResponse.json({
+          success: true,
+          mode: "server",
+          message: `Pulso de ${duration}ms enviado para coil ${address}`,
+          coil: address,
+          duration,
+          hasClients: testServer.hasClients(),
+        });
+      } else if (testClient) {
+        // Modo Client: escrever no CLP remoto
+        await testClient.writeSingleCoil(address, true);
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "pulse_start",
+          mode: "client",
+          coil: address,
+          duration,
+          message: `Pulso enviado ao CLP - coil ${address} por ${duration}ms`,
+        });
+
+        setTimeout(async () => {
+          if (testClient && testClient.isConnected()) {
+            await testClient.writeSingleCoil(address, false);
+            testHistory.push({
+              timestamp: Date.now(),
+              action: "pulse_end",
+              mode: "client",
+              coil: address,
+              message: `Pulso finalizado no CLP - coil ${address}`,
+            });
+          }
+        }, duration);
+
+        return NextResponse.json({
+          success: true,
+          mode: "client",
+          message: `Pulso de ${duration}ms enviado ao CLP - coil ${address}`,
+          coil: address,
+          duration,
+        });
+      } else {
+        return NextResponse.json(
+          { error: "Teste não está rodando" },
+          { status: 400 },
+        );
+      }
     }
 
     // Definir coil (ligar/desligar)
     if (action === "set") {
-      if (!testServer) {
+      const address = parseInt(coilAddress);
+      const state = value === true || value === "true";
+
+      if (testServer) {
+        // Modo Server
+        testServer.writeCoil(address, state);
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "set",
+          mode: "server",
+          coil: address,
+          value: state,
+          message: `Coil ${address} definido para ${state ? "ON" : "OFF"}`,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "server",
+          message: `Coil ${address} definido para ${state ? "ON" : "OFF"}`,
+          coil: address,
+          value: state,
+          hasClients: testServer.hasClients(),
+        });
+      } else if (testClient) {
+        // Modo Client
+        await testClient.writeSingleCoil(address, state);
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "set",
+          mode: "client",
+          coil: address,
+          value: state,
+          message: `Coil ${address} no CLP definido para ${state ? "ON" : "OFF"}`,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "client",
+          message: `Coil ${address} no CLP definido para ${state ? "ON" : "OFF"}`,
+          coil: address,
+          value: state,
+        });
+      } else {
         return NextResponse.json(
-          { error: "Servidor de teste não está rodando" },
+          { error: "Teste não está rodando" },
+          { status: 400 },
+        );
+      }
+    }
+
+    // Ler coils (apenas para modo client)
+    if (action === "read") {
+      if (!testClient) {
+        return NextResponse.json(
+          { error: "Modo client não está ativo" },
           { status: 400 },
         );
       }
 
       const address = parseInt(coilAddress);
-      const state = value === true || value === "true";
+      const quantity = parseInt(value) || 10;
 
-      testServer.writeCoil(address, state);
+      const result = await testClient.readCoils(address, quantity);
 
       testHistory.push({
         timestamp: Date.now(),
-        action: "set",
+        action: "read",
+        mode: "client",
         coil: address,
-        value: state,
-        message: `Coil ${address} definido para ${state ? "ON" : "OFF"}`,
+        quantity,
+        message: `Lidos ${quantity} coils do CLP a partir do endereço ${address}`,
       });
 
       return NextResponse.json({
-        success: true,
-        message: `Coil ${address} definido para ${state ? "ON" : "OFF"}`,
+        success: result.success,
+        mode: "client",
+        message: result.success ? `Coils lidos do CLP` : `Erro: ${result.error}`,
         coil: address,
-        value: state,
-        hasClients: testServer.hasClients(),
+        quantity,
+        values: result.coils || [],
       });
     }
 
     // Obter status
     if (action === "status") {
+      const currentMode = testServer ? "server" : testClient ? "client" : null;
+      
       return NextResponse.json({
-        running: testServer !== null,
-        uptime: testServer ? Date.now() - testStartTime : 0,
+        running: testServer !== null || testClient !== null,
+        mode: currentMode,
+        uptime: (testServer || testClient) ? Date.now() - testStartTime : 0,
         hasClients: testServer ? testServer.hasClients() : false,
+        connected: testClient ? testClient.isConnected() : false,
         history: testHistory.slice(-50), // Últimos 50 eventos
       });
     }
@@ -174,7 +326,8 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   // Verificar estado real
   const savedState = getTestServerState();
-  const actuallyRunning = testServer !== null;
+  const actuallyRunning = testServer !== null || testClient !== null;
+  const currentMode = testServer ? "server" : testClient ? "client" : null;
 
   // Se o estado salvo diz que está rodando mas não está, corrigir
   if (savedState.running && !actuallyRunning) {
@@ -186,8 +339,10 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     running: actuallyRunning,
+    mode: currentMode,
     uptime: actuallyRunning ? Date.now() - startTime : 0,
     hasClients: testServer ? testServer.hasClients() : false,
+    connected: testClient ? testClient.isConnected() : false,
     history: testHistory.slice(-50),
     savedState: savedState,
   });
