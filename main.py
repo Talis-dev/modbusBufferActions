@@ -18,6 +18,7 @@ REGISTROS_ESCRITA_CLP = [6, 7, 8, 9, 10, 11, 12]  # Saídas do CLP (0 ou 1)
 FILAS_PRODUTOS = {saida: deque() for saida in range(len(REGISTROS_ESCRITA_CLP))}
 
 
+
 def ler_entradas(cliente):
     try:
         leitura = cliente.read_holding_registers(address=REGISTROS_LEITURA_SLAVE[0], count=len(REGISTROS_LEITURA_SLAVE))
