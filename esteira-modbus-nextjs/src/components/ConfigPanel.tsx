@@ -11,6 +11,7 @@ import {
   ArrowPathIcon,
   CheckIcon,
   BeakerIcon,
+  CalculatorIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -18,6 +19,12 @@ export default function ConfigPanel() {
   const [config, setConfig] = useState<SystemConfig | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+
+  // Calculadora de delays
+  const [distances, setDistances] = useState<number[]>([0, 0, 0, 0, 0, 0]);
+  const [calculatedDelays, setCalculatedDelays] = useState<number[]>([
+    0, 0, 0, 0, 0, 0,
+  ]);
 
   useEffect(() => {
     fetchConfig();
@@ -77,6 +84,45 @@ export default function ConfigPanel() {
     } catch (error: any) {
       alert(`Erro ao resetar: ${error.message}`);
     }
+  };
+
+  // Calculadora de delays
+  const calculateDelays = () => {
+    if (!config || config.conveyorSpeed <= 0) {
+      alert("Configure a velocidade da esteira antes de calcular!");
+      return;
+    }
+
+    const delays = distances.map((distance) => {
+      if (distance <= 0) return 0;
+      // delayTime = distância / velocidade
+      return Number((distance / config.conveyorSpeed).toFixed(2));
+    });
+
+    setCalculatedDelays(delays);
+  };
+
+  const applyCalculatedDelays = () => {
+    if (!config) return;
+
+    const hasValidDelays = calculatedDelays.some((d) => d > 0);
+    if (!hasValidDelays) {
+      alert("Calcule os delays primeiro!");
+      return;
+    }
+
+    const updatedOutputs = config.outputs.map((output, index) => ({
+      ...output,
+      delayTime: calculatedDelays[index] || output.delayTime,
+    }));
+
+    setConfig({ ...config, outputs: updatedOutputs });
+    alert("Delays aplicados com sucesso!");
+  };
+
+  const clearCalculator = () => {
+    setDistances([0, 0, 0, 0, 0, 0]);
+    setCalculatedDelays([0, 0, 0, 0, 0, 0]);
   };
 
   if (loading || !config) {
@@ -257,8 +303,9 @@ export default function ConfigPanel() {
                 placeholder="20"
               />
               <p className="mt-1 text-xs text-gray-500">
-                Coil utilizado para ativar/desativar o modo fachina (padrão: 20).
-                Quando ativo, sinaliza ao CLP que os módulos estão levantados e roletes ativos.
+                Coil utilizado para ativar/desativar o modo fachina (padrão:
+                20). Quando ativo, sinaliza ao CLP que os módulos estão
+                levantados e roletes ativos.
               </p>
             </div>
           </div>
@@ -293,6 +340,21 @@ export default function ConfigPanel() {
             ))}
           </div>
         </section>
+
+        {/* Calculadora de Delays */}
+        <DelayCalculator
+          config={config}
+          distances={distances}
+          calculatedDelays={calculatedDelays}
+          onDistanceChange={(index, value) => {
+            const newDistances = [...distances];
+            newDistances[index] = value;
+            setDistances(newDistances);
+          }}
+          onCalculate={calculateDelays}
+          onApply={applyCalculatedDelays}
+          onClear={clearCalculator}
+        />
       </div>
     </div>
   );
@@ -379,7 +441,10 @@ function OutputConfigRow({
           type="number"
           value={output.activeEngineDuration}
           onChange={(e) =>
-            onChange({ ...output, activeEngineDuration: parseInt(e.target.value) })
+            onChange({
+              ...output,
+              activeEngineDuration: parseInt(e.target.value),
+            })
           }
           className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-orange-50"
           placeholder="Motor"
@@ -395,5 +460,128 @@ function OutputConfigRow({
         />
       </div>
     </div>
+  );
+}
+
+function DelayCalculator({
+  config,
+  distances,
+  calculatedDelays,
+  onDistanceChange,
+  onCalculate,
+  onApply,
+  onClear,
+}: {
+  config: SystemConfig;
+  distances: number[];
+  calculatedDelays: number[];
+  onDistanceChange: (index: number, value: number) => void;
+  onCalculate: () => void;
+  onApply: () => void;
+  onClear: () => void;
+}) {
+  return (
+    <section className="border-t-4 border-purple-500 pt-6">
+      <div className="flex items-center gap-2 mb-4">
+        <CalculatorIcon className="w-6 h-6 text-purple-600" />
+        <h3 className="text-lg font-semibold text-gray-800">
+          Calculadora Automática de Delays
+        </h3>
+      </div>
+
+      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
+        <p className="text-sm text-purple-900 mb-2">
+          <strong>Como usar:</strong>
+        </p>
+        <ol className="text-xs text-purple-800 space-y-1 ml-4 list-decimal">
+          <li>Configure a velocidade da esteira acima</li>
+          <li>
+            Insira a distância (em metros) de cada saída em relação ao início
+          </li>
+          <li>Clique em "Calcular Delays" para ver os tempos calculados</li>
+          <li>
+            Clique em "Aplicar aos Delays" para aplicar os valores calculados
+          </li>
+        </ol>
+        <p className="text-xs text-purple-700 mt-2">
+          <strong>Fórmula:</strong> Delay (s) = Distância (m) / Velocidade (m/s)
+        </p>
+        <p className="text-xs text-purple-700">
+          <strong>Velocidade atual:</strong> {config.conveyorSpeed} m/s
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        {config.outputs.map((output, index) => (
+          <div
+            key={output.id}
+            className="grid grid-cols-4 gap-3 items-center p-3 bg-white rounded-lg border border-gray-200"
+          >
+            <div>
+              <label className="text-sm font-medium text-gray-700">
+                {output.name}
+              </label>
+            </div>
+            <div>
+              <label className="block text-xs text-gray-600 mb-1">
+                Distância (m)
+              </label>
+              <input
+                type="number"
+                step="0.1"
+                value={distances[index]}
+                onChange={(e) =>
+                  onDistanceChange(index, parseFloat(e.target.value) || 0)
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                placeholder="Ex: 4.0"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-gray-600 mb-1">
+                Delay Calculado (s)
+              </label>
+              <div className="px-3 py-2 bg-purple-100 border border-purple-300 rounded-lg text-center font-semibold text-purple-900">
+                {calculatedDelays[index] > 0
+                  ? calculatedDelays[index].toFixed(2)
+                  : "—"}
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs text-gray-600 mb-1">
+                Delay Atual (s)
+              </label>
+              <div className="px-3 py-2 bg-gray-100 border border-gray-200 rounded-lg text-center text-gray-700">
+                {output.delayTime}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex gap-3 mt-4">
+        <button
+          onClick={onCalculate}
+          className="flex-1 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 flex items-center justify-center gap-2 font-medium transition-colors"
+        >
+          <CalculatorIcon className="w-5 h-5" />
+          Calcular Delays
+        </button>
+        <button
+          onClick={onApply}
+          className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center gap-2 font-medium transition-colors"
+        >
+          <CheckIcon className="w-5 h-5" />
+          Aplicar aos Delays
+        </button>
+        <button
+          onClick={onClear}
+          className="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 flex items-center justify-center gap-2 font-medium transition-colors"
+        >
+          <ArrowPathIcon className="w-5 h-5" />
+          Limpar
+        </button>
+      </div>
+    </section>
   );
 }
