@@ -435,7 +435,7 @@ export default function ConfigPanel() {
                     cleaningModeCoil: parseInt(e.target.value),
                   })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="20"
               />
               <p className="mt-1 text-xs text-gray-500">
@@ -698,21 +698,21 @@ function DelayCalculator({
       <div className="flex gap-3 mt-4">
         <button
           onClick={onCalculate}
-          className="flex-1 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 flex items-center justify-center gap-2 font-medium transition-colors"
+          className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 flex items-center justify-center gap-2 font-medium transition-colors"
         >
           <CalculatorIcon className="w-5 h-5" />
           Calcular Delays
         </button>
         <button
           onClick={onApply}
-          className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center gap-2 font-medium transition-colors"
+          className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center gap-2 font-medium transition-colors"
         >
           <CheckIcon className="w-5 h-5" />
           Aplicar aos Delays
         </button>
         <button
           onClick={onClear}
-          className="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 flex items-center justify-center gap-2 font-medium transition-colors"
+          className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 flex items-center justify-center gap-2 font-medium transition-colors"
         >
           <ArrowPathIcon className="w-5 h-5" />
           Limpar

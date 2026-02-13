@@ -159,35 +159,35 @@ export default function SystemControl() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-bold text-gray-900 mb-4">
+    <div className="bg-white rounded-lg shadow-md p-3 xl:p-4">
+      <h2 className="text-lg xl:text-xl font-bold text-gray-900 mb-3 xl:mb-4">
         Controle do Sistema
       </h2>
 
-      <div className="flex gap-4">
+      <div className="flex gap-2 xl:gap-3">
         {/* Botão Iniciar/Abortar */}
         {!running && !connecting ? (
           <button
             onClick={handleStart}
             disabled={loading}
             className={cn(
-              "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+              "flex-1 flex items-center justify-center gap-2 px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base rounded-lg font-medium transition-all",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               "bg-green-600 text-white hover:bg-green-700 active:scale-95",
             )}
           >
-            <PlayIcon className="w-5 h-5" />
+            <PlayIcon className="w-4 h-4 xl:w-5 xl:h-5" />
             {loading ? "Iniciando..." : "Iniciar Sistema"}
           </button>
         ) : connecting ? (
           <button
             onClick={handleStop}
             className={cn(
-              "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all animate-pulse",
+              "flex-1 flex items-center justify-center gap-2 px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base rounded-lg font-medium transition-all animate-pulse",
               "bg-orange-600 text-white hover:bg-orange-700 active:scale-95",
             )}
           >
-            <StopIcon className="w-5 h-5" />
+            <StopIcon className="w-4 h-4 xl:w-5 xl:h-5" />
             ⚠️ Abortar Conexão
           </button>
         ) : (
@@ -195,7 +195,7 @@ export default function SystemControl() {
             onClick={handleStart}
             disabled={loading}
             className={cn(
-              "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+              "flex-1 flex items-center justify-center gap-2 px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base rounded-lg font-medium transition-all",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               "bg-gray-100 text-gray-400",
             )}
@@ -210,14 +210,14 @@ export default function SystemControl() {
           onClick={handleStop}
           disabled={!running || loading}
           className={cn(
-            "flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+            "flex-1 flex items-center justify-center gap-2 px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base rounded-lg font-medium transition-all",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             !running
               ? "bg-gray-100 text-gray-400"
               : "bg-red-600 text-white hover:bg-red-700 active:scale-95",
           )}
         >
-          <StopIcon className="w-5 h-5" />
+          <StopIcon className="w-4 h-4 xl:w-5 xl:h-5" />
           {loading && running ? "Parando..." : "Parar Sistema"}
         </button>
 
@@ -226,7 +226,7 @@ export default function SystemControl() {
           onClick={handleToggleCleaningMode}
           disabled={!running || cleaningLoading}
           className={cn(
-            "w-fit flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+            "w-fit flex items-center justify-center gap-2 px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base rounded-lg font-medium transition-all",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             !running
               ? "bg-gray-100 text-gray-400"
@@ -235,7 +235,7 @@ export default function SystemControl() {
                 : "bg-purple-600 text-white hover:bg-purple-700 active:scale-95",
           )}
         >
-          <SparklesIcon className="w-5 h-5" />
+          <SparklesIcon className="w-4 h-4 xl:w-5 xl:h-5" />
           {cleaningLoading
             ? "Alternando..."
             : cleaningMode
@@ -245,9 +245,9 @@ export default function SystemControl() {
       </div>
 
       {/* Status Indicator */}
-      <div className="mt-4 p-4 rounded-lg bg-gray-50 border border-gray-200">
+      <div className="mt-3 xl:mt-4 p-3 xl:p-4 rounded-lg bg-gray-50 border border-gray-200">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-700">Status:</span>
+          <span className="text-xs xl:text-sm font-medium text-gray-700">Status:</span>
           <div className="flex items-center gap-2">
             <div
               className={cn(

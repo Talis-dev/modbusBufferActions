@@ -2,21 +2,33 @@ import { NextResponse } from "next/server";
 
 /**
  * POST /api/system/restart
- * Reinicia o servidor Next.js
+ * Reinicia o servidor Next.js (Windows Task Scheduler)
  */
 export async function POST() {
   try {
-    console.log("[System] Reiniciando servidor...");
+    console.log("[System] Solicitação de reinicialização recebida...");
+
+    // Em produção no Windows com Agendador de Tarefas:
+    // 1. Para o sistema Modbus
+    // 2. Mata o processo Node.js
+    // 3. O Agendador de Tarefas detecta e reinicia automaticamente
+
+    // Responde primeiro
+    const response = NextResponse.json({
+      success: true,
+      message: "Sistema será reiniciado em 2 segundos...",
+    });
 
     // Agenda o restart após retornar a resposta
     setTimeout(() => {
-      process.exit(0); // O PM2 ou supervisor irá reiniciar automaticamente
-    }, 500);
+      console.log("[System] Executando reinicialização...");
 
-    return NextResponse.json({
-      success: true,
-      message: "Sistema será reiniciado em breve...",
-    });
+      // Força o encerramento do processo
+      // O Agendador de Tarefas (configurado com restart) irá reiniciar
+      process.exit(0);
+    }, 2000);
+
+    return response;
   } catch (error: any) {
     return NextResponse.json(
       {

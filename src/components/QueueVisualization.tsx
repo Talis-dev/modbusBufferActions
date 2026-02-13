@@ -62,23 +62,23 @@ export default function QueueVisualization({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-bold text-gray-900 mb-4">
+    <div className="bg-white rounded-lg shadow-md p-3 xl:p-4">
+      <h2 className="text-lg xl:text-xl font-bold text-gray-900 mb-3 xl:mb-4">
         Filas de Produtos
       </h2>
 
-      <div className="space-y-4">
+      <div className="space-y-3 xl:space-y-4">
         {queues.map((queue) => (
-          <div key={queue.outputId} className="border rounded-lg p-4">
+          <div key={queue.outputId} className="border rounded-lg p-3 xl:p-4">
             {/* Header da Fila */}
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-semibold text-gray-900">
+            <div className="flex items-center justify-between mb-2 xl:mb-3">
+              <div className="flex items-center gap-2 xl:gap-3">
+                <span className="text-base xl:text-lg font-semibold text-gray-900">
                   Saída {queue.outputId}
                 </span>
                 <span
                   className={cn(
-                    "px-2 py-1 rounded text-xs font-medium",
+                    "px-2 py-0.5 xl:py-1 rounded text-xs font-medium",
                     queue.blocked
                       ? "bg-red-100 text-red-700"
                       : "bg-green-100 text-green-700",
@@ -86,7 +86,7 @@ export default function QueueVisualization({
                 >
                   {queue.blocked ? "Bloqueada" : "Livre"}
                 </span>
-                <span className="px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-medium">
+                <span className="px-2 py-0.5 xl:py-1 rounded bg-blue-100 text-blue-700 text-xs font-medium">
                   {queue.products.length}{" "}
                   {queue.products.length === 1 ? "produto" : "produtos"}
                 </span>
@@ -95,7 +95,7 @@ export default function QueueVisualization({
               {queue.products.length > 0 && (
                 <button
                   onClick={() => clearQueue(queue.outputId)}
-                  className="text-red-600 hover:text-red-700 text-sm font-medium flex items-center gap-1"
+                  className="text-red-600 hover:text-red-700 text-xs xl:text-sm font-medium flex items-center gap-1"
                 >
                   <XCircleIcon className="w-4 h-4" />
                   Limpar
@@ -105,11 +105,11 @@ export default function QueueVisualization({
 
             {/* Lista de Produtos */}
             {queue.products.length === 0 ? (
-              <p className="text-gray-400 text-sm italic">
+              <p className="text-gray-400 text-xs xl:text-sm italic">
                 Nenhum produto na fila
               </p>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-2 xl:space-y-2">
                 {queue.products.map((product, index) => (
                   <ProductCard
                     key={product.id}
@@ -145,9 +145,9 @@ function ProductCard({
   );
 
   return (
-    <div className="bg-gray-50 rounded p-3 border border-gray-200">
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
+    <div className="bg-gray-50 rounded p-2 xl:p-3 border border-gray-200">
+      <div className="flex items-center justify-between mb-1.5 xl:mb-2">
+        <div className="flex items-center gap-1.5 xl:gap-2">
           <span className="text-xs font-bold text-gray-500">#{position}</span>
           <span className="text-xs text-gray-600 font-mono">
             {product.id.slice(0, 8)}
@@ -155,7 +155,7 @@ function ProductCard({
         </div>
         <span
           className={cn(
-            "px-2 py-0.5 rounded text-xs font-medium",
+            "px-1.5 xl:px-2 py-0.5 rounded text-xs font-medium",
             product.status === "waiting" && "bg-yellow-100 text-yellow-700",
             product.status === "in-transit" && "bg-blue-100 text-blue-700",
             product.status === "arrived" && "bg-green-100 text-green-700",
@@ -172,11 +172,11 @@ function ProductCard({
       </div>
 
       {/* Barra de Progresso */}
-      <div className="mb-2">
-        <div className="w-full bg-gray-200 rounded-full h-2">
+      <div className="mb-1.5 xl:mb-2">
+        <div className="w-full bg-gray-200 rounded-full h-1.5 xl:h-2">
           <div
             className={cn(
-              "h-2 rounded-full transition-all duration-300",
+              "h-1.5 xl:h-2 rounded-full transition-all duration-300",
               product.status === "in-transit" && "bg-blue-500",
               product.status === "arrived" && "bg-green-500",
               product.status === "waiting" && "bg-yellow-500",

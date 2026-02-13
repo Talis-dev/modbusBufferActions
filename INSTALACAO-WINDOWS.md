@@ -15,7 +15,7 @@ Antes de começar, certifique-se de ter:
 1. Abra o PowerShell como **Administrador**
 2. Navegue até a pasta do projeto:
    ```powershell
-   cd "C:\Users\usuario\Desktop\Repositorio\SmartConveyor"
+   cd "C:\SmartConveyor"
    ```
 3. Execute o build:
    ```powershell
@@ -28,7 +28,7 @@ Antes de começar, certifique-se de ter:
 No PowerShell, execute:
 
 ```powershell
-New-Item -ItemType Directory -Path "C:\Users\usuario\Desktop\Repositorio\SmartConveyor\logs" -Force
+New-Item -ItemType Directory -Path "C:\SmartConveyor\logs" -Force
 ```
 
 ## 🎯 Método A: Agendador de Tarefas - Interface Gráfica
@@ -71,15 +71,15 @@ Configure os seguintes campos:
    - **Ação**: Selecione **"Iniciar um programa"**
    - **Programa/script**:
      ```
-     C:\Program Files\nodejs\node.exe
+     cmd.exe
      ```
    - **Adicionar argumentos (opcional)**:
      ```
-     node_modules\.bin\next start
+     /c npm start
      ```
    - **Iniciar em (opcional)**:
      ```
-     C:\Users\usuario\Desktop\Repositorio\SmartConveyor
+     C:\SmartConveyor
      ```
 3. Clique em **"OK"**
 
@@ -101,9 +101,12 @@ Configure as seguintes opções:
 2. ☑️ **Marque**: "Executar tarefa assim que possível após uma inicialização agendada ter sido perdida"
 3. ☑️ **Marque**: "Se a tarefa falhar, reiniciar a cada:"
    - Defina: **1 minuto**
-   - Tentativas: **3**
-4. **Se a tarefa já estiver em execução**:
+   - Tentativas: **999** (ilimitado)
+4. ☐ **Desmarque**: "Parar a tarefa se ela for executada por mais de:"
+5. **Se a tarefa já estiver em execução**:
    - Selecione: **"Não iniciar uma nova instância"**
+
+> ⚠️ **IMPORTANTE**: A configuração de "reiniciar a cada 1 minuto" com 999 tentativas garante que o sistema reinicie automaticamente quando você usar o botão "Reiniciar Sistema" nas configurações.
 
 ### Passo 8: Finalizar
 
@@ -132,16 +135,16 @@ Configure as seguintes opções:
 ### Passo 2: Navegar até a Pasta do Projeto
 
 ```powershell
-cd "C:\Users\usuario\Desktop\Repositorio\SmartConveyor"
+cd "C:\SmartConveyor"
 ```
 
 ### Passo 3: Criar a Ação (o que executar)
 
 ```powershell
 $action = New-ScheduledTaskAction `
-  -Execute "C:\Program Files\nodejs\node.exe" `
-  -Argument "node_modules\.bin\next start" `
-  -WorkingDirectory "C:\Users\usuario\Desktop\Repositorio\SmartConveyor"
+  -Execute "cmd.exe" `
+  -Argument "/c npm start" `
+  -WorkingDirectory "C:\SmartConveyor"
 ```
 
 ### Passo 4: Criar o Gatilho (quando executar)
@@ -166,10 +169,13 @@ $settings = New-ScheduledTaskSettingsSet `
   -AllowStartIfOnBatteries `
   -DontStopIfGoingOnBatteries `
   -StartWhenAvailable `
-  -RestartCount 3 `
+  -RestartCount 999 `
   -RestartInterval (New-TimeSpan -Minutes 1) `
-  -MultipleInstances IgnoreNew
+  -MultipleInstances IgnoreNew `
+  -ExecutionTimeLimit (New-TimeSpan -Days 0)
 ```
+
+> ⚠️ **IMPORTANTE**: `-RestartCount 999` garante reinicialização automática quando usar o botão "Reiniciar Sistema".
 
 ### Passo 7: Registrar a Tarefa
 
@@ -298,13 +304,15 @@ Get-ScheduledTask -TaskName "SmartConveyor" | Get-ScheduledTaskInfo
 
 **Problema**: Node.js não encontrado
 
-- **Solução**: Verifique o caminho: `C:\Program Files\nodejs\node.exe`
-- Ou use: `where.exe node` para encontrar o caminho correto
+- **Solução**: Verifique se Node.js está no PATH
+- Execute: `where.exe node` para encontrar o caminho
+- Reinstale Node.js se necessário
 
 **Problema**: Projeto não inicia
 
 - **Solução**: Verifique se o build foi feito: `npm run build`
-- Verifique logs em: `C:\Users\usuario\Desktop\Repositorio\SmartConveyor\logs`
+- Verifique logs em: `C:\SmartConveyor\logs`
+- Execute manualmente: `cd C:\SmartConveyor` e depois `npm start`
 
 ---
 
