@@ -30,6 +30,10 @@ export default function ConfigPanel() {
   const [uptime, setUptime] = useState<string>("");
   const [restarting, setRestarting] = useState(false);
 
+  // Leitura de HRs do CLP
+  const [readingHRs, setReadingHRs] = useState(false);
+  const [hrValues, setHrValues] = useState<Map<number, number>>(new Map());
+
   useEffect(() => {
     fetchConfig();
     fetchUptime();
@@ -97,6 +101,41 @@ export default function ConfigPanel() {
     } catch (error: any) {
       alert(`Erro ao reiniciar: ${error.message}`);
       setRestarting(false);
+    }
+  };
+
+  // Lê HRs do CLP
+  const readCLPHoldingRegisters = async () => {
+    if (!config) return;
+
+    const startAddr = config.motorTimesStartAddress ?? 0;
+    const numOutputs = config.outputs.length;
+
+    setReadingHRs(true);
+    try {
+      const response = await fetch("/api/modbus/read-hr", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          startAddress: startAddr,
+          quantity: numOutputs,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success && data.values) {
+        const newMap = new Map<number, number>();
+        data.values.forEach((val: number, index: number) => {
+          newMap.set(startAddr + index, val);
+        });
+        setHrValues(newMap);
+      } else {
+        alert(`Erro ao ler HRs: ${data.error || "Erro desconhecido"}`);
+      }
+    } catch (error: any) {
+      alert(`Erro ao ler HRs: ${error.message}`);
+    } finally {
+      setReadingHRs(false);
     }
   };
 
@@ -198,6 +237,7 @@ export default function ConfigPanel() {
           )}
         </div>
         <div className="flex gap-2">
+        
           <button
             onClick={restartSystem}
             disabled={restarting}
@@ -356,7 +396,79 @@ export default function ConfigPanel() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  HR Inicial (Tempos de Motor)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  value={config.motorTimesStartAddress ?? 0}
+                  onChange={(e) =>
+                    setConfig({ ...config, motorTimesStartAddress: parseInt(e.target.value) })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  title="Endereço inicial dos HRs onde serão escritos os tempos de motor (ex: 1 para pular HR 0)"
+                />
+                <p className="mt-1 text-xs text-gray-600">
+                  💡 HR onde começa os tempos (0-5 padrão, 1-6 se HR 0 reservado)
+                </p>
+              </div>
+              <div className="flex items-center -mt-3">
+                  <button
+            onClick={readCLPHoldingRegisters}
+            disabled={readingHRs || !config}
+            className="px-4 py-2 rounded-lg border border-blue-300 text-blue-700 hover:bg-blue-50 flex items-center gap-2 transition-colors disabled:opacity-50"
+          >
+            <CogIcon className="w-4 h-4" />
+            {readingHRs ? "Lendo HRs..." : "Ler HRs do CLP"}
+          </button>
+              </div>
             </div>
+
+            {/* Exibir HRs lidos do CLP */}
+            {hrValues.size > 0 && (
+              <div className="mt-4 p-4 bg-white rounded-lg border border-green-300">
+                <h5 className="text-sm font-semibold text-green-900 mb-3">
+                  📊 HRs Lidos do CLP
+                </h5>
+                <div className="grid grid-cols-3 gap-3">
+                  {config.outputs.map((output, index) => {
+                    const hrAddr = (config.motorTimesStartAddress ?? 0) + index;
+                    const value = hrValues.get(hrAddr);
+                    return (
+                      <div
+                        key={output.id}
+                        className="bg-gray-50 p-3 rounded border border-gray-200"
+                      >
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs font-medium text-gray-600">
+                            HR {hrAddr} - {output.name}
+                          </span>
+                        </div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-lg font-bold text-green-700">
+                            {value ?? "-"}
+                          </span>
+                          <span className="text-xs text-gray-500">ms</span>
+                        </div>
+                        {value !== undefined && value !== output.activeEngineDuration && (
+                          <p className="text-xs text-orange-600 mt-1">
+                            ⚠️ Diferente do configurado ({output.activeEngineDuration}ms)
+                          </p>
+                        )}
+                        {value !== undefined && value === output.activeEngineDuration && (
+                          <p className="text-xs text-green-600 mt-1">
+                            ✓ Sincronizado
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -452,7 +564,7 @@ export default function ConfigPanel() {
           <h3 className="text-lg font-semibold text-gray-800 mb-3">
             Saídas Laterais
           </h3>
-          <div className="grid grid-cols-8 gap-3 mb-2 text-xs font-semibold text-gray-600 px-3">
+          <div className="grid grid-cols-9 gap-3 mb-2 text-xs font-semibold text-gray-600 px-3">
             <div>Nome</div>
             <div>Delay (s)</div>
             <div>Tolerância (s)</div>
@@ -460,6 +572,7 @@ export default function ConfigPanel() {
             <div>Coil Entrada</div>
             <div>Coil Saída</div>
             <div>Motor Ativo (ms)</div>
+            <div>HR Address</div>
             <div className="text-center">Ativo</div>
           </div>
           <div className="space-y-3">
@@ -504,7 +617,7 @@ function OutputConfigRow({
   onChange: (output: OutputConfig) => void;
 }) {
   return (
-    <div className="grid grid-cols-8 gap-3 items-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+    <div className="grid grid-cols-9 gap-3 items-center p-3 bg-gray-50 rounded-lg border border-gray-200">
       <div>
         <input
           type="text"
@@ -585,6 +698,26 @@ function OutputConfigRow({
           className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-orange-50"
           placeholder="Motor"
           title="Tempo que o motor ficará ativo (ms) - escrito em holding register para CLP ler"
+        />
+      </div>
+      <div>
+        <input
+          type="number"
+          min="1"
+          max="12"
+          value={output.motorTimeHRAddress ?? 0}
+          onChange={(e) => {
+            const val = parseInt(e.target.value);
+            if (val >= 1 && val <= 12) {
+              onChange({
+                ...output,
+                motorTimeHRAddress: val,
+              });
+            }
+          }}
+          className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-purple-50"
+          placeholder="HR"
+          title="Endereço do Holding Register onde será escrito o tempo de motor (1-12)"
         />
       </div>
       <div className="flex justify-center">

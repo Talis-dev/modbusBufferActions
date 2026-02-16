@@ -6,6 +6,7 @@ import { modbusManager } from "./modbus-client";
 import { ModbusServer } from "./modbus-server";
 import { QueueManager } from "./queue-manager";
 import { SystemConfig, SystemState, OutputSensor } from "@/types";
+import { systemLogger } from "./system-logger";
 
 export class ConveyorController {
   private config: SystemConfig;
@@ -45,7 +46,7 @@ export class ConveyorController {
    */
   async start(): Promise<boolean> {
     if (this.running) {
-      console.log("[Controller] Já está em execução");
+      systemLogger.info("Controller", "Sistema já está em execução");
       return true;
     }
 
@@ -59,8 +60,9 @@ export class ConveyorController {
           this.config.slaveTimeout,
         );
         await slaveClient.connect();
-        console.log(
-          `[Controller] Conectado ao Slave Pool (Client) ${this.config.slaveIp}:${this.config.slavePort}`,
+        systemLogger.success(
+          "Controller",
+          `Conectado ao Slave Pool (Client) ${this.config.slaveIp}:${this.config.slavePort}`,
         );
       } else {
         // Modo Server: Aguarda Slave Pool conectar
@@ -68,11 +70,13 @@ export class ConveyorController {
           this.slavePoolServer = new ModbusServer(this.config.slavePort);
         }
         await this.slavePoolServer.start();
-        console.log(
-          `[Controller] ✅ Servidor Slave Pool iniciado na porta ${this.config.slavePort}`,
+        systemLogger.success(
+          "Controller",
+          `Servidor Slave Pool iniciado na porta ${this.config.slavePort}`,
         );
-        console.log(
-          `[Controller] Aguardando Slave Pool conectar em 0.0.0.0:${this.config.slavePort}`,
+        systemLogger.info(
+          "Controller",
+          `Aguardando Slave Pool conectar em 0.0.0.0:${this.config.slavePort}`,
         );
       }
 
@@ -88,8 +92,9 @@ export class ConveyorController {
         );
         this.modbusServer.setEngineActiveDurations(engineDurations);
 
-        console.log(
-          `[Controller] Aguardando CLP conectar (Server) na porta ${this.config.clpPort}`,
+        systemLogger.info(
+          "Controller",
+          `Aguardando CLP conectar (Server) na porta ${this.config.clpPort}`,
         );
       } else {
         // Modo Client: Conecta no CLP
@@ -99,18 +104,44 @@ export class ConveyorController {
           this.config.clpTimeout,
         );
         await clpClient.connect();
-        console.log(
-          `[Controller] Conectado ao CLP (Client) ${this.config.clpIp}:${this.config.clpPort}`,
+
+        // Escreve tempos de motor ativo nos holding registers do CLP
+        // Usa endereço individual configurado em cada saída (motorTimeHRAddress)
+        for (const output of this.config.outputs) {
+          const hrAddress = output.motorTimeHRAddress || 1;
+          await clpClient.writeSingleRegister(
+            hrAddress,
+            output.activeEngineDuration,
+          );
+        }
+
+        const hrAddresses = this.config.outputs
+          .map((o) => o.motorTimeHRAddress || 1)
+          .join(", ");
+        const engineDurations = this.config.outputs
+          .map((o) => o.activeEngineDuration)
+          .join(", ");
+
+        systemLogger.success(
+          "Controller",
+          `Conectado ao CLP (Client) ${this.config.clpIp}:${this.config.clpPort}`,
+        );
+        systemLogger.info(
+          "Controller",
+          `Tempos de motor escritos no CLP (HRs ${hrAddresses}): ${engineDurations} ms`,
         );
       }
 
       this.running = true;
       this.startCycle();
 
-      console.log("[Controller] Sistema iniciado com sucesso");
+      systemLogger.success("Controller", "Sistema iniciado com sucesso");
       return true;
     } catch (error: any) {
-      console.error("[Controller] Erro ao iniciar sistema:", error.message);
+      systemLogger.error(
+        "Controller",
+        `Erro ao iniciar sistema: ${error.message}`,
+      );
       return false;
     }
   }
@@ -141,7 +172,7 @@ export class ConveyorController {
     }
 
     modbusManager.disconnectAll();
-    console.log("[Controller] Sistema parado completamente");
+    systemLogger.info("Controller", "Sistema parado completamente");
   }
 
   /**
@@ -172,7 +203,8 @@ export class ConveyorController {
   }
 
   /**
-   * Gerencia erros de leitura Modbus com auto-stop
+   * Gerencia erros de leitura Modbus - apenas registra, nunca para o sistema
+   * Sistema deve permanecer ativo aguardando reconexão automática
    */
   private handleReadError(message: string): void {
     const now = Date.now();
@@ -181,45 +213,49 @@ export class ConveyorController {
     if (!this.firstErrorTime) {
       this.firstErrorTime = now;
       this.errorCount = 1;
-      console.error(`[Controller] ⚠️  ERRO: ${message}`);
+      systemLogger.error("Controller", message);
+      systemLogger.info(
+        "Controller",
+        "Sistema permanece ativo aguardando reconexão...",
+      );
       return;
     }
 
     this.errorCount++;
 
-    // Verifica se passou 10 segundos desde o primeiro erro
+    // Calcula tempo decorrido desde o primeiro erro
     const elapsedSeconds = (now - this.firstErrorTime) / 1000;
 
-    if (elapsedSeconds > 10 && !this.autoStopScheduled) {
-      this.autoStopScheduled = true;
-      console.error(
-        `\n[Controller] ❌ Sistema parado automaticamente após ${this.errorCount} erros em ${elapsedSeconds.toFixed(1)}s`,
+    // Log periódico - apenas a cada 10 segundos para não poluir console
+    if (!this.lastErrorLog || now - this.lastErrorLog > 10000) {
+      systemLogger.warning(
+        "Controller",
+        `Aguardando reconexão... (${this.errorCount} tentativas em ${elapsedSeconds.toFixed(1)}s)`,
       );
-      console.error(
-        `[Controller] 🔍 Verifique: endereços Modbus, conexão com Slave Pool, configuração do simulador\n`,
+      systemLogger.info(
+        "Controller",
+        "Sistema continua ativo - reconexão automática em andamento",
       );
-
-      // Para o sistema
-      this.stop().catch((err) =>
-        console.error("[Controller] Erro ao parar sistema:", err),
-      );
-    } else if (!this.autoStopScheduled) {
-      // Log silencioso - apenas a cada 3 segundos
-      if (!this.lastErrorLog || now - this.lastErrorLog > 3000) {
-        console.warn(
-          `[Controller] Erros contínuos: ${this.errorCount} em ${elapsedSeconds.toFixed(1)}s (auto-stop em ${(10 - elapsedSeconds).toFixed(1)}s)`,
-        );
-        this.lastErrorLog = now;
-      }
+      this.lastErrorLog = now;
     }
+
+    // IMPORTANTE: Sistema NUNCA para automaticamente em modo operação
+    // Apenas aguarda reconexão do Slave Pool ou CLP
   }
 
   /**
-   * Reseta contador de erros após leitura bem-sucedida
+   * Reseta contador de erros após leitura bem-sucedida (reconexão)
    */
   private resetErrorCounter(): void {
     if (this.errorCount > 0) {
-      console.log(`[Controller] ✅ Conexão restaurada`);
+      const elapsedSeconds = this.firstErrorTime
+        ? ((Date.now() - this.firstErrorTime) / 1000).toFixed(1)
+        : "0";
+      systemLogger.success(
+        "Controller",
+        `Reconectado com sucesso após ${this.errorCount} tentativas (${elapsedSeconds}s offline)`,
+      );
+      systemLogger.success("Controller", "Sistema operando normalmente");
     }
     this.errorCount = 0;
     this.firstErrorTime = undefined;
@@ -257,7 +293,7 @@ export class ConveyorController {
           this.config.slaveTimeout,
         );
 
-        if (!slaveClient.isConnected()) return;
+        if (!slaveClient.isActuallyConnected()) return;
 
         const startAddress = Math.min(
           ...this.config.inputSensors.map((s) => s.address),
@@ -295,8 +331,9 @@ export class ConveyorController {
         if (currentState && !previousState) {
           const sensor = this.config.inputSensors[index];
           if (sensor) {
-            console.log(
-              `[Controller] Pulso detectado no sensor ${sensor.address} - Produto tipo ${sensor.productType}`,
+            systemLogger.info(
+              "Controller",
+              `Pulso detectado no sensor ${sensor.address} - Produto tipo ${sensor.productType}`,
             );
 
             // Adiciona produto à fila
@@ -337,8 +374,9 @@ export class ConveyorController {
             if (shouldActivate && !wasActivated) {
               const pulseDuration = output.pulseDuration || 500;
               sensor.lastActivation = Date.now();
-              console.log(
-                `[Controller] ➡️ Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
+              systemLogger.info(
+                "Controller",
+                `Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
               );
             }
           }
@@ -351,7 +389,7 @@ export class ConveyorController {
           this.config.clpTimeout,
         );
 
-        if (!clpClient.isConnected()) return;
+        if (!clpClient.isActuallyConnected()) return;
 
         for (const output of this.config.outputs) {
           const shouldActivate = activations.get(output.id) || false;
@@ -368,8 +406,9 @@ export class ConveyorController {
             if (shouldActivate && !wasActivated) {
               const pulseDuration = output.pulseDuration || 500;
               sensor.lastActivation = Date.now();
-              console.log(
-                `[Controller] ➡️ Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
+              systemLogger.info(
+                "Controller",
+                `Pulso ${pulseDuration}ms enviado para saída ${output.id} (${output.name}) - Coil ${output.outputAddress}`,
               );
             }
           }
@@ -445,20 +484,51 @@ export class ConveyorController {
   /**
    * Atualiza a configuração
    */
-  updateConfig(config: SystemConfig): void {
+  async updateConfig(config: SystemConfig): Promise<void> {
     this.config = config;
     // Reinicializa o queue manager com as novas configurações
     this.queueManager = new QueueManager(config.outputs);
 
     // Atualiza tempos de motor ativo nos holding registers
+    const engineDurations = config.outputs.map(
+      (output) => output.activeEngineDuration,
+    );
+
     if (this.modbusServer) {
-      const engineDurations = config.outputs.map(
-        (output) => output.activeEngineDuration,
-      );
+      // Modo Server: escreve nos buffers locais
       this.modbusServer.setEngineActiveDurations(engineDurations);
+    } else if (this.config.clpMode === "client") {
+      // Modo Client: escreve nos HRs do CLP remoto
+      const clpClient = modbusManager.getCLPClient(
+        this.config.clpIp,
+        this.config.clpPort,
+        this.config.clpTimeout,
+      );
+
+      if (clpClient.isActuallyConnected()) {
+        // Escreve cada tempo de motor no HR correspondente usando endereço individual
+        for (const output of this.config.outputs) {
+          const hrAddress = output.motorTimeHRAddress || 1;
+          await clpClient.writeSingleRegister(
+            hrAddress,
+            output.activeEngineDuration,
+          );
+        }
+
+        const hrAddresses = this.config.outputs
+          .map((o) => o.motorTimeHRAddress || 1)
+          .join(", ");
+        const durations = this.config.outputs
+          .map((o) => o.activeEngineDuration)
+          .join(", ");
+        systemLogger.info(
+          "Controller",
+          `Tempos de motor atualizados no CLP (HRs ${hrAddresses}): ${durations} ms`,
+        );
+      }
     }
 
-    console.log("[Controller] Configuração atualizada");
+    systemLogger.info("Controller", "Configuração atualizada");
   }
 
   /**
@@ -466,8 +536,9 @@ export class ConveyorController {
    */
   toggleCleaningMode(): boolean {
     if (!this.running) {
-      console.warn(
-        "[Controller] Não é possível alternar modo fachina - sistema não está rodando",
+      systemLogger.warning(
+        "Controller",
+        "Não é possível alternar modo fachina - sistema não está rodando",
       );
       return false;
     }
@@ -489,15 +560,16 @@ export class ConveyorController {
         this.config.clpPort,
         this.config.clpTimeout,
       );
-      if (!clpClient.isConnected()) return false;
+      if (!clpClient.isActuallyConnected()) return false;
       clpClient.writeSingleCoil(
         this.config.cleaningModeCoil,
         this.cleaningMode,
       );
     }
 
-    console.log(
-      `[Controller] Modo fachina ${this.cleaningMode ? "ATIVADO" : "DESATIVADO"}`,
+    systemLogger.success(
+      "Controller",
+      `Modo fachina ${this.cleaningMode ? "ATIVADO" : "DESATIVADO"}`,
     );
     return this.cleaningMode;
   }

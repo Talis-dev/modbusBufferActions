@@ -18,6 +18,10 @@ export class ModbusClient {
   private connected: boolean = false;
   private reconnectInterval: NodeJS.Timeout | null = null;
   private shouldAutoReconnect: boolean = true; // Flag para controlar auto-reconexão
+  private lastErrorLogged: boolean = false; // Flag para evitar spam de logs
+  private wasConnected: boolean = false; // Flag para detectar reconexão bem-sucedida
+  private connectionStableTime: number = 0; // Timestamp de quando a conexão se estabilizou
+  private reconnectAttempts: number = 0; // Número de tentativas de reconexão
 
   constructor(host: string, port: number, timeout: number = 5000) {
     this.host = host;
@@ -46,25 +50,40 @@ export class ModbusClient {
 
         this.socket.on("connect", () => {
           this.connected = true;
-          systemLogger.success(
-            "Modbus Client",
-            `Conectado a ${this.host}:${this.port}`,
-          );
+          this.connectionStableTime = Date.now();
+          this.reconnectAttempts = 0;
+
+          // Logar sucesso apenas se estava desconectado ou é primeira conexão
+          if (!this.wasConnected || this.lastErrorLogged) {
+            systemLogger.success(
+              "Modbus Client",
+              `Conectado a ${this.host}:${this.port}`,
+            );
+            this.lastErrorLogged = false;
+            this.wasConnected = true;
+          }
+
           resolve(true);
         });
 
         this.socket.on("error", (err: Error) => {
           this.connected = false;
-          systemLogger.error(
-            "Modbus Client",
-            `Erro de conexão: ${err.message}`,
-          );
-          criticalAlerts.addAlert(
-            "client_error",
-            "critical",
-            `Erro ao conectar com Slave Pool (${this.host}:${this.port}): ${err.message}`,
-            { host: this.host, port: this.port, error: err.message },
-          );
+
+          // Logar erro apenas na primeira ocorrência
+          if (!this.lastErrorLogged) {
+            systemLogger.error(
+              "Modbus Client",
+              `Erro de conexão: ${err.message}`,
+            );
+            criticalAlerts.addAlert(
+              "client_error",
+              "critical",
+              `Erro ao conectar com Slave Pool (${this.host}:${this.port}): ${err.message}`,
+              { host: this.host, port: this.port, error: err.message },
+            );
+            this.lastErrorLogged = true;
+          }
+
           // Só reconecta se auto-reconexão estiver habilitada
           if (this.shouldAutoReconnect && !this.reconnectInterval) {
             this.startReconnect();
@@ -73,22 +92,34 @@ export class ModbusClient {
 
         this.socket.on("close", () => {
           this.connected = false;
-          systemLogger.warning(
-            "Modbus Client",
-            `Conexão fechada com ${this.host}:${this.port}`,
-          );
-          // Só tenta reconectar se auto-reconexão estiver habilitada
-          if (this.shouldAutoReconnect) {
-            criticalAlerts.addAlert(
-              "connection_lost",
-              "warning",
-              `Conexão perdida com Slave Pool (${this.host}:${this.port}). Tentando reconectar...`,
-              { host: this.host, port: this.port },
+
+          // Logar fechamento apenas na primeira ocorrência
+          if (!this.lastErrorLogged) {
+            systemLogger.warning(
+              "Modbus Client",
+              `Conexão fechada com ${this.host}:${this.port}`,
             );
-            // Inicia reconexão automática
-            if (!this.reconnectInterval) {
-              this.startReconnect();
+
+            // Só tenta reconectar se auto-reconexão estiver habilitada
+            if (this.shouldAutoReconnect) {
+              criticalAlerts.addAlert(
+                "connection_lost",
+                "warning",
+                `Conexão perdida com Slave Pool (${this.host}:${this.port}). Tentando reconectar...`,
+                { host: this.host, port: this.port },
+              );
+              systemLogger.info(
+                "Modbus Client",
+                `Tentando reconectar a ${this.host}:${this.port} em segundo plano...`,
+              );
             }
+
+            this.lastErrorLogged = true;
+          }
+
+          // Inicia reconexão automática se habilitado
+          if (this.shouldAutoReconnect && !this.reconnectInterval) {
+            this.startReconnect();
           }
         });
 
@@ -110,18 +141,24 @@ export class ModbusClient {
   }
 
   /**
-   * Inicia reconexão automática
+   * Inicia reconexão automática (silenciosa - logs apenas na primeira falha e na reconexão bem-sucedida)
+   * Usa backoff exponencial: 5s, 10s, 15s, 20s, 30s (máximo)
    */
   private startReconnect(): void {
     if (this.reconnectInterval) return;
 
-    systemLogger.info(
-      "Modbus Client",
-      `Tentando reconectar a ${this.host}:${this.port}...`,
-    );
+    // Backoff exponencial: aumenta intervalo a cada tentativa falhada
+    const getReconnectDelay = () => {
+      if (this.reconnectAttempts < 3) return 5000; // Primeiras 3 tentativas: 5s
+      if (this.reconnectAttempts < 6) return 10000; // Próximas 3: 10s
+      if (this.reconnectAttempts < 10) return 15000; // Próximas 4: 15s
+      if (this.reconnectAttempts < 15) return 20000; // Próximas 5: 20s
+      return 30000; // Depois: 30s
+    };
 
-    this.reconnectInterval = setInterval(async () => {
+    const attemptReconnect = async () => {
       if (!this.connected) {
+        this.reconnectAttempts++;
         try {
           await this.connect();
           if (this.connected && this.reconnectInterval) {
@@ -129,7 +166,13 @@ export class ModbusClient {
             this.reconnectInterval = null;
           }
         } catch (error) {
-          // Continua tentando
+          // Ajusta intervalo para próxima tentativa
+          if (this.reconnectInterval) {
+            clearInterval(this.reconnectInterval);
+            this.reconnectInterval = null;
+          }
+          const delay = getReconnectDelay();
+          this.reconnectInterval = setTimeout(attemptReconnect, delay);
         }
       } else {
         if (this.reconnectInterval) {
@@ -137,7 +180,11 @@ export class ModbusClient {
           this.reconnectInterval = null;
         }
       }
-    }, 5000); // Tenta reconectar a cada 5s
+    };
+
+    // Primeira tentativa
+    const initialDelay = getReconnectDelay();
+    this.reconnectInterval = setTimeout(attemptReconnect, initialDelay) as any;
   }
 
   /**
@@ -162,10 +209,26 @@ export class ModbusClient {
   }
 
   /**
-   * Verifica se está conectado
+   * Verifica se está conectado imediatamente (sem esperar estabilização)
+   * Use para operações de leitura/escrita
+   */
+  isActuallyConnected(): boolean {
+    return this.socket !== null && !this.socket.destroyed;
+  }
+
+  /**
+   * Verifica se está conectado E a conexão está estável
+   * Conexão só é considerada estável após 2 segundos sem desconectar
+   * Use para reportar status ao usuário
    */
   isConnected(): boolean {
-    return this.connected;
+    if (!this.connected || this.socket === null || this.socket.destroyed) {
+      return false;
+    }
+
+    // Verifica se a conexão está estável (mais de 2 segundos)
+    const connectionAge = Date.now() - this.connectionStableTime;
+    return connectionAge > 2000;
   }
 
   /**
@@ -175,7 +238,8 @@ export class ModbusClient {
     startAddress: number,
     quantity: number,
   ): Promise<ModbusReadResponse> {
-    if (!this.connected) {
+    // Verifica se socket existe e não foi destruído
+    if (!this.socket || this.socket.destroyed) {
       return {
         success: false,
         error: "Cliente Modbus não conectado",
@@ -219,7 +283,7 @@ export class ModbusClient {
     startAddress: number,
     quantity: number,
   ): Promise<ModbusReadResponse> {
-    if (!this.connected) {
+    if (!this.socket || this.socket.destroyed) {
       return {
         success: false,
         error: "Cliente Modbus não conectado",
@@ -257,7 +321,7 @@ export class ModbusClient {
    * Escreve um único registrador
    */
   async writeSingleRegister(address: number, value: number): Promise<boolean> {
-    if (!this.connected) {
+    if (!this.socket || this.socket.destroyed) {
       console.error("[Modbus] Cliente não conectado para escrita");
       return false;
     }
@@ -277,7 +341,7 @@ export class ModbusClient {
    * Escreve uma única coil
    */
   async writeSingleCoil(address: number, value: boolean): Promise<boolean> {
-    if (!this.connected) {
+    if (!this.socket || this.socket.destroyed) {
       console.error("[Modbus] Cliente não conectado para escrita");
       return false;
     }
@@ -300,7 +364,7 @@ export class ModbusClient {
     startAddress: number,
     values: number[],
   ): Promise<boolean> {
-    if (!this.connected) {
+    if (!this.socket || this.socket.destroyed) {
       console.error("[Modbus] Cliente não conectado para escrita");
       return false;
     }
@@ -351,4 +415,13 @@ class ModbusManager {
   }
 }
 
-export const modbusManager = new ModbusManager();
+// Usar global para garantir singleton em ambiente de desenvolvimento com hot-reload
+declare global {
+  var modbusManagerInstance: ModbusManager | undefined;
+}
+
+if (!global.modbusManagerInstance) {
+  global.modbusManagerInstance = new ModbusManager();
+}
+
+export const modbusManager = global.modbusManagerInstance;

@@ -17,6 +17,9 @@ export const defaultConfig: SystemConfig = {
   clpPort: 504,
   clpTimeout: 5000,
 
+  // Endereço inicial dos tempos de motor (Holding Registers)
+  motorTimesStartAddress: 1,
+
   // Configurações da esteira
   conveyorLength: 15, // 15 metros
   conveyorSpeed: 0.5, // m/s (ajustável)
@@ -30,6 +33,7 @@ export const defaultConfig: SystemConfig = {
       toleranceTime: 1, // 1 segundo de tolerância
       pulseDuration: 500, // 500ms de pulso
       activeEngineDuration: 20, //  (2s) de motor ativo no clp
+      motorTimeHRAddress: 1, // Holding Register address
       inputAddress: 1, // Coil 1 - recebe pulsos
       outputAddress: 6, // Coil 6 - envia pulsos ao CLP
       enabled: true,
@@ -41,6 +45,7 @@ export const defaultConfig: SystemConfig = {
       toleranceTime: 1,
       pulseDuration: 500,
       activeEngineDuration: 20,
+      motorTimeHRAddress: 2,
       inputAddress: 2,
       outputAddress: 7,
       enabled: true,
@@ -52,6 +57,7 @@ export const defaultConfig: SystemConfig = {
       toleranceTime: 1,
       pulseDuration: 500,
       activeEngineDuration: 20,
+      motorTimeHRAddress: 3,
       inputAddress: 3,
       outputAddress: 8,
       enabled: true,
@@ -63,6 +69,7 @@ export const defaultConfig: SystemConfig = {
       toleranceTime: 1,
       pulseDuration: 500,
       activeEngineDuration: 20,
+      motorTimeHRAddress: 4,
       inputAddress: 4,
       outputAddress: 9,
       enabled: true,
@@ -74,6 +81,7 @@ export const defaultConfig: SystemConfig = {
       toleranceTime: 1,
       pulseDuration: 500,
       activeEngineDuration: 20,
+      motorTimeHRAddress: 5,
       inputAddress: 5,
       outputAddress: 10,
       enabled: true,
@@ -85,6 +93,7 @@ export const defaultConfig: SystemConfig = {
       toleranceTime: 1,
       pulseDuration: 500,
       activeEngineDuration: 20,
+      motorTimeHRAddress: 6,
       inputAddress: 6,
       outputAddress: 11,
       enabled: true,

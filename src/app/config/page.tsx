@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import ConfigPanel from "@/components/ConfigPanel";
 
 export default function ConfigPage() {
@@ -21,6 +21,13 @@ export default function ConfigPage() {
                 Configurações
               </h1>
             </div>
+            <Link
+              href="/logs"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition flex items-center gap-2"
+            >
+              <DocumentTextIcon className="w-5 h-5" />
+              Logs do Sistema
+            </Link>
           </div>
         </div>
       </header>

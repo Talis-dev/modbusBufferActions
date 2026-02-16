@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     // Iniciar teste (server ou client)
     if (action === "start") {
       const testMode = mode || "server";
-      
+
       // Verificar estado persistente
       const savedState = getTestServerState();
       if (testServer || testClient || savedState.running) {
@@ -58,10 +58,10 @@ export async function POST(request: NextRequest) {
         // Modo Client: Conectar ao CLP
         const clpHost = host || "192.168.3.115";
         const clpPort = port || 502;
-        
+
         testClient = new ModbusClient(clpHost, clpPort, 5000);
         const connected = await testClient.connect();
-        
+
         if (!connected) {
           testClient = null;
           return NextResponse.json(
@@ -295,21 +295,171 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: result.success,
         mode: "client",
-        message: result.success ? `Coils lidos do CLP` : `Erro: ${result.error}`,
+        message: result.success
+          ? `Coils lidos do CLP`
+          : `Erro: ${result.error}`,
         coil: address,
         quantity,
         values: result.coils || [],
       });
     }
 
+    // Ler Holding Registers
+    if (action === "readHR") {
+      const addresses = body.addresses as number[];
+
+      if (!addresses || !Array.isArray(addresses) || addresses.length === 0) {
+        return NextResponse.json(
+          { error: "Endereços de HR inválidos" },
+          { status: 400 },
+        );
+      }
+
+      if (testServer) {
+        // Modo Server: Ler dos próprios buffers
+        const values = addresses.map((addr) => ({
+          address: addr,
+          value: testServer?.readRegister(addr),
+        }));
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "readHR",
+          mode: "server",
+          message: `Lidos ${addresses.length} HRs: ${addresses.join(", ")}`,
+          data: values,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "server",
+          message: `HRs lidos do buffer local`,
+          values,
+        });
+      } else if (testClient) {
+        // Modo Client: Ler do CLP remoto
+        const values: { address: number; value: number }[] = [];
+        let hasError = false;
+        let errorMsg = "";
+
+        for (const addr of addresses) {
+          const result = await testClient.readHoldingRegisters(addr, 1);
+          if (result.success && result.registers) {
+            values.push({
+              address: addr,
+              value: result.registers[0],
+            });
+          } else {
+            hasError = true;
+            errorMsg = result.error || "Erro desconhecido";
+            break;
+          }
+        }
+
+        if (hasError) {
+          return NextResponse.json(
+            { error: `Erro ao ler HRs: ${errorMsg}` },
+            { status: 500 },
+          );
+        }
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "readHR",
+          mode: "client",
+          message: `Lidos ${addresses.length} HRs do CLP: ${addresses.join(", ")}`,
+          data: values,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "client",
+          message: `HRs lidos do CLP`,
+          values,
+        });
+      } else {
+        return NextResponse.json(
+          { error: "Teste não está rodando" },
+          { status: 400 },
+        );
+      }
+    }
+
+    // Escrever Holding Register
+    if (action === "writeHR") {
+      const address = parseInt(body.address);
+      const value = parseInt(body.value);
+
+      if (isNaN(address) || isNaN(value) || value < 0 || value > 65535) {
+        return NextResponse.json(
+          { error: "Endereço ou valor inválido (0-65535)" },
+          { status: 400 },
+        );
+      }
+
+      if (testServer) {
+        // Modo Server: Escrever no buffer local
+        testServer.writeRegister(address, value);
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "writeHR",
+          mode: "server",
+          message: `HR ${address} definido para ${value}`,
+          address,
+          value,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "server",
+          message: `HR ${address} definido para ${value}`,
+          address,
+          value,
+        });
+      } else if (testClient) {
+        // Modo Client: Escrever no CLP remoto
+        const success = await testClient.writeSingleRegister(address, value);
+
+        if (!success) {
+          return NextResponse.json(
+            { error: "Falha ao escrever no CLP" },
+            { status: 500 },
+          );
+        }
+
+        testHistory.push({
+          timestamp: Date.now(),
+          action: "writeHR",
+          mode: "client",
+          message: `HR ${address} no CLP definido para ${value}`,
+          address,
+          value,
+        });
+
+        return NextResponse.json({
+          success: true,
+          mode: "client",
+          message: `HR ${address} no CLP definido para ${value}`,
+          address,
+          value,
+        });
+      } else {
+        return NextResponse.json(
+          { error: "Teste não está rodando" },
+          { status: 400 },
+        );
+      }
+    }
+
     // Obter status
     if (action === "status") {
       const currentMode = testServer ? "server" : testClient ? "client" : null;
-      
+
       return NextResponse.json({
         running: testServer !== null || testClient !== null,
         mode: currentMode,
-        uptime: (testServer || testClient) ? Date.now() - testStartTime : 0,
+        uptime: testServer || testClient ? Date.now() - testStartTime : 0,
         hasClients: testServer ? testServer.hasClients() : false,
         connected: testClient ? testClient.isConnected() : false,
         history: testHistory.slice(-50), // Últimos 50 eventos

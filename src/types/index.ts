@@ -12,6 +12,7 @@ export interface OutputConfig {
   toleranceTime: number; // Tempo de tolerância (padrão: 1s)
   pulseDuration: number; // Duração do pulso de saída em ms (padrão: 500ms)
   activeEngineDuration: number; // Tempo de motor ativo em ms (escrito em holding register para CLP)
+  motorTimeHRAddress: number; // Endereço do HR onde será escrito o tempo de motor (1-12, bloqueado 0)
   inputAddress: number; // Endereço Modbus da coil de ENTRADA (1-6) - pulsos recebidos
   outputAddress: number; // Endereço Modbus da coil de SAÍDA (6-11) - pulsos enviados ao CLP
   enabled: boolean; // Saída habilitada
@@ -63,16 +64,17 @@ export interface OutputSensor {
  */
 export interface SystemConfig {
   // Modbus Slave (leitura de pulsos)
-  slaveMode: 'client' | 'server'; // Modo de conexão: client (conecta) ou server (aguarda)
+  slaveMode: "client" | "server"; // Modo de conexão: client (conecta) ou server (aguarda)
   slaveIp: string;
   slavePort: number;
   slaveTimeout: number;
 
   // Modbus Master/CLP (escrita de comandos)
-  clpMode: 'client' | 'server'; // Modo de conexão: client (conecta) ou server (aguarda)
+  clpMode: "client" | "server"; // Modo de conexão: client (conecta) ou server (aguarda)
   clpIp: string;
   clpPort: number;
   clpTimeout: number;
+  motorTimesStartAddress: number; // Endereço inicial dos HRs de tempo de motor (padrão: 1 para pular HR 0 se reservado para coils)
 
   // Configurações da esteira
   conveyorLength: number; // Comprimento total (metros)

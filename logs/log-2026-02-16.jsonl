@@ -1,0 +1,1011 @@
+{"id":"1771259734258-kh0fifugl","timestamp":1771259734258,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771259734258-6kf72qbxp","timestamp":1771259734258,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771259734260-r9lp4vr96","timestamp":1771259734260,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771259734260-02ez49epc","timestamp":1771259734260,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771259734260-vjz13zesh","timestamp":1771259734260,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771259734269-i7tqprvxy","timestamp":1771259734269,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771259734288-p0ic292ff","timestamp":1771259734288,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771259734288-97nb2ffbh","timestamp":1771259734288,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771259734288-as4xhxstl","timestamp":1771259734288,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771259734555-nj6r3ab2i","timestamp":1771259734555,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:62540","data":{"total":1}}
+{"id":"1771259740776-ery89pray","timestamp":1771259740776,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771259740777-ryu6bwoy7","timestamp":1771259740777,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771259740778-mvkn91k3l","timestamp":1771259740778,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771259796586-9a11dis2v","timestamp":1771259796586,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771259796587-h6vuk7lrb","timestamp":1771259796587,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771259796588-hurqer2gb","timestamp":1771259796588,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771259796588-a4aq5nqme","timestamp":1771259796588,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771259796588-g4bsjgcif","timestamp":1771259796588,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771259796593-3hnm3z4fn","timestamp":1771259796593,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771259796614-40ag7f5dy","timestamp":1771259796614,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771259796614-x1qzoen06","timestamp":1771259796614,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771259796615-vkdop4h0g","timestamp":1771259796615,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771259797706-qo5htph8b","timestamp":1771259797706,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:64694","data":{"total":1}}
+{"id":"1771259813844-ibvex37wb","timestamp":1771259813844,"level":"success","category":"Controller","message":"Modo fachina ATIVADO"}
+{"id":"1771259820177-k9ho8czom","timestamp":1771259820177,"level":"success","category":"Controller","message":"Modo fachina DESATIVADO"}
+{"id":"1771260189641-pfk32tq1g","timestamp":1771260189641,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771260189642-y85dmecov","timestamp":1771260189642,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771260189656-s0pxz5eq8","timestamp":1771260189656,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771260621462-3u9py08ab","timestamp":1771260621462,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771260621462-7jqn98hvz","timestamp":1771260621462,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771260621463-j2a0onl8v","timestamp":1771260621463,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771260621464-uoen0uvwh","timestamp":1771260621464,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771260621464-xcr03whs6","timestamp":1771260621464,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771260621475-0aqyyc84q","timestamp":1771260621475,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771260621503-xkxoxr022","timestamp":1771260621503,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771260621503-ar1p2zy22","timestamp":1771260621503,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771260621504-dtu08xkq5","timestamp":1771260621504,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771260621570-srsm0zzkk","timestamp":1771260621570,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:54392","data":{"total":1}}
+{"id":"1771260644376-6vzb204qq","timestamp":1771260644376,"level":"success","category":"Controller","message":"Modo fachina ATIVADO"}
+{"id":"1771260729830-dnl2f4c5o","timestamp":1771260729830,"level":"success","category":"Controller","message":"Modo fachina DESATIVADO"}
+{"id":"1771260962412-6cmksiy59","timestamp":1771260962412,"level":"success","category":"Controller","message":"Modo fachina ATIVADO"}
+{"id":"1771261055758-0p1fds62h","timestamp":1771261055758,"level":"success","category":"Controller","message":"Modo fachina DESATIVADO"}
+{"id":"1771261063108-hcc1d7mh9","timestamp":1771261063108,"level":"success","category":"Controller","message":"Modo fachina ATIVADO"}
+{"id":"1771261070757-m1lb6yuvs","timestamp":1771261070757,"level":"success","category":"Controller","message":"Modo fachina DESATIVADO"}
+{"id":"1771261072361-lmcqmu74s","timestamp":1771261072361,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261072362-nr5w77048","timestamp":1771261072362,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261072371-szfs8125y","timestamp":1771261072371,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261083201-d4kp80xwz","timestamp":1771261083201,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261083201-mqxzww5z4","timestamp":1771261083201,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261083203-7062rgglu","timestamp":1771261083203,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261083203-5v3ci7e38","timestamp":1771261083203,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261083203-2j1jhjjxk","timestamp":1771261083203,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261083205-5plqy7wmn","timestamp":1771261083205,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261083225-ahovrt7lk","timestamp":1771261083225,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261083225-51npscbri","timestamp":1771261083225,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261083225-8qvyy5ye9","timestamp":1771261083225,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261083815-26xrst9v5","timestamp":1771261083815,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:60879","data":{"total":1}}
+{"id":"1771261089729-vjisdzmm3","timestamp":1771261089729,"level":"info","category":"Controller","message":"Pulso detectado no sensor 1 - Produto tipo 1"}
+{"id":"1771261093749-aydqlsube","timestamp":1771261093749,"level":"info","category":"Controller","message":"Pulso 500ms enviado para saída 1 (Saída 1) - Coil 0"}
+{"id":"1771261104171-8tsjn47dp","timestamp":1771261104171,"level":"info","category":"Conexão","message":"Cliente desconectado: 127.0.0.1:60879","data":{"total":0}}
+{"id":"1771261137061-k67722xyh","timestamp":1771261137061,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261137065-07le8k5av","timestamp":1771261137065,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261137066-o29m7mdbs","timestamp":1771261137066,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261137066-u1mv9fdna","timestamp":1771261137066,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261139703-9b9av8om8","timestamp":1771261139703,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261139706-zoq159gum","timestamp":1771261139706,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261139706-y098901n3","timestamp":1771261139706,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261142075-30d201vts","timestamp":1771261142075,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261142083-lyz4o8ef2","timestamp":1771261142083,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261142083-3cei7xm12","timestamp":1771261142083,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261148513-grym8k8hu","timestamp":1771261148513,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261148521-b7ksife20","timestamp":1771261148521,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261148521-emthou6c9","timestamp":1771261148521,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261148522-q5wteewim","timestamp":1771261148522,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261147089-tipj5p7nc","timestamp":1771261147089,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261147092-9lqg6ui83","timestamp":1771261147092,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261147092-squapgjyu","timestamp":1771261147092,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261150849-l6irrkncq","timestamp":1771261150849,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261150851-9rvityzrg","timestamp":1771261150851,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261150852-9r8kk40fz","timestamp":1771261150852,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261153530-qy9gzpzgw","timestamp":1771261153530,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261153538-s0ya263oq","timestamp":1771261153538,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261153538-n7ihv18oj","timestamp":1771261153538,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261152096-yzajm0rcy","timestamp":1771261152096,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261152098-85xsag8on","timestamp":1771261152098,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261152098-9k7y6mukp","timestamp":1771261152098,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261158547-t2zkhpufe","timestamp":1771261158547,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261158549-tlvap7mc6","timestamp":1771261158549,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261158550-8cvgmscrd","timestamp":1771261158550,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261157105-tg5jlvz6a","timestamp":1771261157105,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261157111-275tt5l2i","timestamp":1771261157111,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261157111-fgirm324q","timestamp":1771261157111,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261163556-xni6593qv","timestamp":1771261163556,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261163564-dh9pkfdy6","timestamp":1771261163564,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261163564-gxzia54sg","timestamp":1771261163564,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261162123-ychqmh4jn","timestamp":1771261162123,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261162131-p4ptqzb7p","timestamp":1771261162131,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261162132-lyy162qyg","timestamp":1771261162132,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261168567-sqrp0r9on","timestamp":1771261168567,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261168574-y972154h0","timestamp":1771261168574,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261168575-80gqbhlr1","timestamp":1771261168575,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261167136-kymp2277t","timestamp":1771261167136,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261167138-nmkvyz24l","timestamp":1771261167138,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261167138-2v0n14oy9","timestamp":1771261167138,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261173305-6ztxqb1ar","timestamp":1771261173305,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261173312-21vqtm33r","timestamp":1771261173312,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261173313-pwn0yjg0a","timestamp":1771261173313,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261173579-tjvvow879","timestamp":1771261173579,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261173585-5sizwjjaj","timestamp":1771261173585,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261173586-jj2gwla2t","timestamp":1771261173586,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261172145-ty75ijbjh","timestamp":1771261172145,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261172147-uuvvnmhhj","timestamp":1771261172147,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261172147-3xr1e1sfz","timestamp":1771261172147,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261178588-o3hzoh346","timestamp":1771261178588,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261178594-1kvin8e18","timestamp":1771261178594,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261178594-sccu3nxzz","timestamp":1771261178594,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261177156-pdio89xze","timestamp":1771261177156,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261177158-a3h4likzt","timestamp":1771261177158,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261177158-62ijd9xww","timestamp":1771261177158,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261182335-07xa9p7up","timestamp":1771261182335,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261182335-w9u9sh7bo","timestamp":1771261182335,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261182336-78pzfto3f","timestamp":1771261182336,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261183600-dzvnw7tt1","timestamp":1771261183600,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261183978-pbaouhfkv","timestamp":1771261183978,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261183978-n40nob2wm","timestamp":1771261183978,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261183979-ev7h81qrs","timestamp":1771261183979,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261183980-f0gljd1yt","timestamp":1771261183980,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261183980-y3mn1qmbu","timestamp":1771261183980,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261183982-xbyubhgu4","timestamp":1771261183982,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261183989-skhtcgg2l","timestamp":1771261183989,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261183990-xm650clli","timestamp":1771261183990,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261183990-soay7u1hf","timestamp":1771261183990,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261183991-wpx8jvzgv","timestamp":1771261183991,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261183991-4nh02cjw9","timestamp":1771261183991,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261183991-8fahiodim","timestamp":1771261183991,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261182164-wcu1v9ufo","timestamp":1771261182164,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261182170-roev9on67","timestamp":1771261182170,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261182170-m303eqxn2","timestamp":1771261182170,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261188996-blxbjqc3k","timestamp":1771261188996,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261188998-oi033gkp6","timestamp":1771261188998,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261188999-nh65vxeok","timestamp":1771261188999,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261187182-6nv89guqv","timestamp":1771261187182,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261187188-7li3m3h1s","timestamp":1771261187188,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261187188-r5kcyls69","timestamp":1771261187188,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261193411-ql9x2p5tf","timestamp":1771261193411,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261193411-xvqyojbqd","timestamp":1771261193411,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261192196-03ds3uupw","timestamp":1771261192196,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261192198-icwfopqhj","timestamp":1771261192198,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261192199-zue95rktb","timestamp":1771261192199,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261196608-8leqylpgk","timestamp":1771261196608,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261196608-kp356teh2","timestamp":1771261196608,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261196609-iljqbwhjk","timestamp":1771261196609,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261196609-cpag3ebym","timestamp":1771261196609,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261196609-adv5lwdry","timestamp":1771261196609,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261196611-ybuuv9ggi","timestamp":1771261196611,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261196618-yrk0w6hkq","timestamp":1771261196618,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261196618-xeg9pquko","timestamp":1771261196618,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261196619-v0ncpq95z","timestamp":1771261196619,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261196620-z369dlv4b","timestamp":1771261196620,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261196620-8mqonjc05","timestamp":1771261196620,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261196620-dczi6y82w","timestamp":1771261196620,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261197212-78atcnz3p","timestamp":1771261197212,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261197220-nphmq2geh","timestamp":1771261197220,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261197220-fqx5k3qe7","timestamp":1771261197220,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261200860-mol53htr2","timestamp":1771261200860,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261200860-wtbnlsyfc","timestamp":1771261200860,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261202230-30m5n0h4a","timestamp":1771261202230,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261202236-qwzonkckm","timestamp":1771261202236,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261202237-pfuevm1v9","timestamp":1771261202237,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261207243-to8msy60w","timestamp":1771261207243,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261207247-measzhzb5","timestamp":1771261207247,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261207247-m23f1sil4","timestamp":1771261207247,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261213607-zueerf6n6","timestamp":1771261213607,"level":"warning","category":"Modbus Client","message":"Timeout na conexão com 192.168.3.115:504"}
+{"id":"1771261212266-whvo91peh","timestamp":1771261212266,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261212279-yzheboz0x","timestamp":1771261212279,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261212279-mdaeuxwkg","timestamp":1771261212279,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261217282-qlf6nvk0r","timestamp":1771261217282,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261217285-z0qct3lsc","timestamp":1771261217285,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261217285-h8qzip5ek","timestamp":1771261217285,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261221370-467v0asc1","timestamp":1771261221370,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261221370-0podt5o8e","timestamp":1771261221370,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261221370-wpjpubxv8","timestamp":1771261221370,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261221370-a6inoh0ms","timestamp":1771261221370,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261221370-2ip6pso9b","timestamp":1771261221370,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261221373-2y2w4d18l","timestamp":1771261221373,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261221380-4jrx8341t","timestamp":1771261221380,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261221380-6pjnltfni","timestamp":1771261221380,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261221380-g1vgw26ub","timestamp":1771261221380,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261221381-fxurwy22m","timestamp":1771261221381,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261221381-qzxtg9uvn","timestamp":1771261221381,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261221381-6sxy8m4tb","timestamp":1771261221382,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261222290-fxa5s5alm","timestamp":1771261222290,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261222292-g89nvpqzv","timestamp":1771261222292,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261222292-bwidsefit","timestamp":1771261222292,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261226383-gouhp03e2","timestamp":1771261226383,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261226385-6ibex12eq","timestamp":1771261226385,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261226385-f4e4qz8xf","timestamp":1771261226385,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261227299-dtl6hboiz","timestamp":1771261227299,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261227301-4cutp6edh","timestamp":1771261227301,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261227301-nglqdq9gc","timestamp":1771261227301,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261231391-6z176gn9x","timestamp":1771261231391,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261231393-l6i8s1x8m","timestamp":1771261231393,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261231393-g089l6bja","timestamp":1771261231393,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261232307-ugil8xuof","timestamp":1771261232307,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261232314-7m7zk8wp0","timestamp":1771261232314,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261232315-6b7vl8cd1","timestamp":1771261232315,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261236396-ktsjrzzaz","timestamp":1771261236396,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261236398-51ge5qyvf","timestamp":1771261236398,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261236399-l63foid76","timestamp":1771261236399,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261237323-6kx3f28jj","timestamp":1771261237323,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261237330-n4ogkmykp","timestamp":1771261237330,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261237330-6trjtz1d2","timestamp":1771261237330,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261241402-kezeau5tv","timestamp":1771261241402,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261241408-gtlksergk","timestamp":1771261241408,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261241408-l85jpmzy1","timestamp":1771261241408,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261242343-rh2gd5q8e","timestamp":1771261242343,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261242345-fw7gn1stn","timestamp":1771261242345,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261242345-sdn59zr04","timestamp":1771261242345,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261246418-9gqlzu5rd","timestamp":1771261246418,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261246425-9dl67v8sl","timestamp":1771261246425,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261246425-s8n1wy21w","timestamp":1771261246425,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261247361-y6wh7xwz7","timestamp":1771261247361,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261247367-aq86nick7","timestamp":1771261247367,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261247367-2xhxtp175","timestamp":1771261247367,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261251427-r6qx6qgvf","timestamp":1771261251427,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261251433-0jks6mov7","timestamp":1771261251433,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261251433-vn5b08itj","timestamp":1771261251433,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261252372-4vg5yak4b","timestamp":1771261252372,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261252379-spgb1fg55","timestamp":1771261252379,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261252379-1987gdgf6","timestamp":1771261252379,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261256436-xj7zcmm44","timestamp":1771261256437,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261256442-4a95o7hf4","timestamp":1771261256442,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261256442-dzcivr870","timestamp":1771261256442,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261257384-wdbl9ioy4","timestamp":1771261257384,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261257386-uwjpwzsjp","timestamp":1771261257386,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261257386-h47mvmt1o","timestamp":1771261257386,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261261444-ywp3gz2kh","timestamp":1771261261444,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261261446-dwy9u07lq","timestamp":1771261261446,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261261447-fziytqje2","timestamp":1771261261447,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261262389-cvz4754hl","timestamp":1771261262389,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261262391-fa2qx0win","timestamp":1771261262391,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261262391-tmbxokpjy","timestamp":1771261262391,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261266451-ks5m064bz","timestamp":1771261266451,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261266453-1beq5lnwq","timestamp":1771261266453,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261266453-mvncm8m0i","timestamp":1771261266453,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261267395-oh7ovuhb2","timestamp":1771261267395,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261267397-p432obyvg","timestamp":1771261267397,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261267397-9lntrkqmf","timestamp":1771261267397,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261271455-jfp7x1bdq","timestamp":1771261271455,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261271462-kyu0msycp","timestamp":1771261271462,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261271462-mocaqfbgo","timestamp":1771261271462,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261272408-3sz3sj4qw","timestamp":1771261272408,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261272415-69lzp6t0u","timestamp":1771261272415,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261272416-bo6qk3y5b","timestamp":1771261272416,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261276468-uk738k9vf","timestamp":1771261276468,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261276475-ofzgbu866","timestamp":1771261276475,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261276476-ti239g6ig","timestamp":1771261276476,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261277419-j9p2fubiu","timestamp":1771261277419,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261277426-n76ymfawb","timestamp":1771261277426,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261277427-64rg2dwuv","timestamp":1771261277427,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261281485-trxe02h4o","timestamp":1771261281485,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261281489-rihl9sbhb","timestamp":1771261281489,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261281489-m7wtfa0gs","timestamp":1771261281489,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261282429-4vv3iff7d","timestamp":1771261282429,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261282436-i7icmilt9","timestamp":1771261282436,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261282437-55doj66tk","timestamp":1771261282437,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261286491-fl5vaqowq","timestamp":1771261286491,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261286494-rgtjal1ew","timestamp":1771261286494,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261286494-ksya9yn5v","timestamp":1771261286494,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261287445-oxuu7xih5","timestamp":1771261287445,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261287447-jnln947la","timestamp":1771261287447,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261287447-r25diaef5","timestamp":1771261287447,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261291496-lpw4va100","timestamp":1771261291496,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261291498-pohcbqgp6","timestamp":1771261291498,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261291499-o3h6zmx81","timestamp":1771261291499,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261292457-hvv6tc3ci","timestamp":1771261292457,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261292463-2h1sx6ght","timestamp":1771261292463,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261292464-k95mnwvle","timestamp":1771261292464,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261296503-eo8u0mb23","timestamp":1771261296503,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261296510-k78tbtbi5","timestamp":1771261296510,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261296511-nb8kdpajs","timestamp":1771261296511,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261297470-14qthvd7i","timestamp":1771261297470,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261297476-5l780bg78","timestamp":1771261297476,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261297477-lvxj0t74l","timestamp":1771261297477,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261301517-qub9ope5a","timestamp":1771261301517,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261301524-uh8i25bl5","timestamp":1771261301524,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261301525-glzc3h47a","timestamp":1771261301525,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261302484-h2d2kfcbp","timestamp":1771261302484,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261302488-okjlouqjs","timestamp":1771261302488,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261302488-9s3dngx4j","timestamp":1771261302488,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261306529-j99uqg8i1","timestamp":1771261306529,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261306531-dhvzy9swo","timestamp":1771261306531,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261306531-zoyti43dd","timestamp":1771261306531,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261307490-biqxvpz5z","timestamp":1771261307490,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261307492-8kgczms1p","timestamp":1771261307492,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261307493-yve8btmsr","timestamp":1771261307493,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261311539-h4fwwmadh","timestamp":1771261311539,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261311541-phhhk77fy","timestamp":1771261311541,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261311541-3or8688bz","timestamp":1771261311541,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261312499-qjismkxc6","timestamp":1771261312499,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261312501-hlti8rys2","timestamp":1771261312501,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261312501-f1v4brp8l","timestamp":1771261312501,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261316545-8gmghtd4f","timestamp":1771261316545,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261316547-gbjbg2k5e","timestamp":1771261316547,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261316547-z1asip9o4","timestamp":1771261316547,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261317506-urpehiez7","timestamp":1771261317506,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261317514-ts1yu93y8","timestamp":1771261317514,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261317514-h8uj61xu6","timestamp":1771261317514,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261321557-68i7pjwnd","timestamp":1771261321557,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261321563-jvvm6vn52","timestamp":1771261321563,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261321563-3b5d7qftn","timestamp":1771261321563,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261322522-nftcpmocl","timestamp":1771261322522,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261322529-u1x5r4dga","timestamp":1771261322529,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261322530-1kffoxmeq","timestamp":1771261322530,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261326570-ct5uljico","timestamp":1771261326570,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261326577-g5v6yhimk","timestamp":1771261326577,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261326578-62kwp7r6o","timestamp":1771261326578,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261327543-n8qcwtfqa","timestamp":1771261327543,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261327545-gkehkp6sv","timestamp":1771261327545,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261327546-mbgpdicik","timestamp":1771261327546,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261331588-hl8hjyptu","timestamp":1771261331588,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261331590-776uffe4j","timestamp":1771261331590,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261331590-5hyvtvwjj","timestamp":1771261331590,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261332560-doc2reivj","timestamp":1771261332560,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261332567-cvv1nwvfj","timestamp":1771261332567,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261332567-ond72gnv7","timestamp":1771261332567,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261336617-2fhtfi5xz","timestamp":1771261336617,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261336624-63bo3x9w5","timestamp":1771261336624,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261336625-5bbsqudt2","timestamp":1771261336625,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261337584-a8wg8hac5","timestamp":1771261337584,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261337586-nb2v29tvk","timestamp":1771261337586,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261337587-fxfaas8v2","timestamp":1771261337587,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261341640-a5icr8xvy","timestamp":1771261341640,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261341642-9mrndmdbb","timestamp":1771261341643,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261341643-io4xfikvd","timestamp":1771261341643,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261342595-9xbi1vtff","timestamp":1771261342595,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261342597-gctt1rb1b","timestamp":1771261342597,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261342598-gahtjyoga","timestamp":1771261342598,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261346655-b1nfjn1xs","timestamp":1771261346655,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261346657-1ql74jj6s","timestamp":1771261346657,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261346657-gj5qvvju0","timestamp":1771261346657,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261347599-doteydhne","timestamp":1771261347599,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261347602-9u1sl68wk","timestamp":1771261347602,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261347602-1uh0vcvnl","timestamp":1771261347602,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261351660-f5l0mll7q","timestamp":1771261351660,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261351667-snfclmgtz","timestamp":1771261351667,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261351667-jjpaini9l","timestamp":1771261351667,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261352610-jceolqm20","timestamp":1771261352610,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261352618-aid7bqamu","timestamp":1771261352618,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261352618-9h7y2byfr","timestamp":1771261352618,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261356684-vwo80sbsr","timestamp":1771261356684,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261356687-8ya67o8vr","timestamp":1771261356688,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261356688-2tav86pxo","timestamp":1771261356688,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261357622-nzm4frosy","timestamp":1771261357622,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261357628-5qoemh9j4","timestamp":1771261357628,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261357628-v849f5d0w","timestamp":1771261357628,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261361695-144ejmlf7","timestamp":1771261361695,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261361698-b83jsshf9","timestamp":1771261361698,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261361698-5thpvdl8k","timestamp":1771261361699,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261362632-tkzboonc3","timestamp":1771261362632,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261362638-qntl95fph","timestamp":1771261362638,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261362639-gfv9szp1r","timestamp":1771261362639,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261366706-cy1bqxag9","timestamp":1771261366707,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261366713-q9dp7cbc4","timestamp":1771261366713,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261366713-iaorf5895","timestamp":1771261366713,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261367656-f8nyu1gk0","timestamp":1771261367656,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261367660-68rtiav3d","timestamp":1771261367660,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261367661-133oc6n7w","timestamp":1771261367661,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261371725-sq7fja6vx","timestamp":1771261371725,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261371732-x5sam6e4g","timestamp":1771261371732,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261371732-1wypxjjvd","timestamp":1771261371732,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261372677-tt51a93u8","timestamp":1771261372677,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261372681-vi0697iq5","timestamp":1771261372681,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261372681-x4tw2k53g","timestamp":1771261372681,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261376746-z6coyhl0w","timestamp":1771261376747,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261376749-mc9oqgjex","timestamp":1771261376749,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261376750-rpppgu336","timestamp":1771261376750,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261377695-lmrjtgt1d","timestamp":1771261377695,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261377697-2v0pfyp5s","timestamp":1771261377697,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261377697-b7b3zupwj","timestamp":1771261377697,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261381753-or2oaquo6","timestamp":1771261381753,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261381755-zg09dmzy2","timestamp":1771261381755,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261381755-mxzbf6nxp","timestamp":1771261381755,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261382699-xksee77wg","timestamp":1771261382699,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261382701-1cgui0ovz","timestamp":1771261382701,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261382701-ct7b0kl8w","timestamp":1771261382701,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261386764-ze24h5lj3","timestamp":1771261386764,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261386771-pk2mpokaa","timestamp":1771261386771,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261386772-hf2yqg0cg","timestamp":1771261386772,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261387718-qqgiyiyn8","timestamp":1771261387718,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261387724-2a43sn3e6","timestamp":1771261387724,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261387724-y38gk3kd6","timestamp":1771261387724,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261391776-4s5obzecj","timestamp":1771261391776,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261391780-m0kpe10k0","timestamp":1771261391780,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261391781-6k0txhwcl","timestamp":1771261391781,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261392729-bjmu879br","timestamp":1771261392730,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261392735-a7ly6pea3","timestamp":1771261392735,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261392735-yv0h67xeh","timestamp":1771261392735,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261396790-r0pz8d8z0","timestamp":1771261396790,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261396792-lk5zhaxdi","timestamp":1771261396792,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261396792-rq980sbcv","timestamp":1771261396792,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261397740-8gpawoirp","timestamp":1771261397740,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261397742-mcbc65xli","timestamp":1771261397742,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261397742-sgh6akp90","timestamp":1771261397742,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261401806-37sycrff6","timestamp":1771261401806,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261401812-dic51g5zs","timestamp":1771261401812,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261401813-e4z8ewdym","timestamp":1771261401813,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261402747-f3wf9ocwq","timestamp":1771261402747,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261402749-1bd08g1xx","timestamp":1771261402749,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261402749-uiyoq5avv","timestamp":1771261402749,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261406821-cdiw0gg3s","timestamp":1771261406821,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261406827-a1n36cpnx","timestamp":1771261406827,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261406827-y449oyyj2","timestamp":1771261406827,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261407755-e8no3v71s","timestamp":1771261407755,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261407758-zz1yar9pk","timestamp":1771261407758,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261407758-eeb67vq1y","timestamp":1771261407758,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261411837-ul8la0zqd","timestamp":1771261411837,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261411839-nc6occwoi","timestamp":1771261411839,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261411839-w827fegr0","timestamp":1771261411839,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261412761-27g1j1r3b","timestamp":1771261412761,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261412768-6024rq1l4","timestamp":1771261412768,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261412768-oga7vp7xl","timestamp":1771261412768,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261416851-85jstndae","timestamp":1771261416851,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261416852-inz5uz6nz","timestamp":1771261416852,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261416852-cdub1h5rp","timestamp":1771261416852,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261417779-isnu8l4ow","timestamp":1771261417779,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261417783-xvgnyiw89","timestamp":1771261417783,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261417783-ywwjfz8ep","timestamp":1771261417783,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261421858-sum3bsx1e","timestamp":1771261421858,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261421864-9bsebph9s","timestamp":1771261421864,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261421864-kx420wktm","timestamp":1771261421864,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261421865-4gu3n57c9","timestamp":1771261421865,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261422790-lky4c6xnw","timestamp":1771261422790,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261422792-56u87cap2","timestamp":1771261422792,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261422792-22pkfqcbi","timestamp":1771261422792,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261426874-w3s0m4fyj","timestamp":1771261426874,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261426881-8an73lc3u","timestamp":1771261426881,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261426882-f0upkxyu8","timestamp":1771261426882,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261427798-4cayaxsdf","timestamp":1771261427798,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261427800-bqyv3g89b","timestamp":1771261427800,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261427801-hbjwxzr34","timestamp":1771261427801,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261431886-zlvwbs72y","timestamp":1771261431886,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261431888-frganjg4h","timestamp":1771261431888,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261431888-8mdq0srei","timestamp":1771261431888,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261432807-8tbn0w5ev","timestamp":1771261432807,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261432814-byn0cfn9l","timestamp":1771261432814,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261432814-4sk5jui58","timestamp":1771261432814,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261436900-z3frnb1z6","timestamp":1771261436900,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261436906-3pzc72drf","timestamp":1771261436906,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261436906-brzik7z6j","timestamp":1771261436906,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261437969-hemjxbqh5","timestamp":1771261437969,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261437969-xsywukmnw","timestamp":1771261437969,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261437969-7iwmu7r1v","timestamp":1771261437969,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261441908-gck01wefr","timestamp":1771261441908,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261441916-c484v1wcj","timestamp":1771261441916,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261441916-pnmdeym2v","timestamp":1771261441916,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261442984-gm2n4lj6x","timestamp":1771261442984,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261442989-w70d6pyso","timestamp":1771261442989,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261442989-zo2b61nhz","timestamp":1771261442989,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261446920-z657xbvfm","timestamp":1771261446920,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261446926-8jv39c85e","timestamp":1771261446926,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261446927-233kvccdp","timestamp":1771261446927,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261447994-ifi60ncvd","timestamp":1771261447994,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261447997-1b67nnkb3","timestamp":1771261447997,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261447997-hjppurbf4","timestamp":1771261447997,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261451936-7wx062oal","timestamp":1771261451936,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261451938-y11mfaq0t","timestamp":1771261451938,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261451938-g31tx6jg3","timestamp":1771261451938,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261452998-c73r363hz","timestamp":1771261452998,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261453004-7331vrncp","timestamp":1771261453004,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261453005-56swq2a9e","timestamp":1771261453005,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261456943-cgiugtl10","timestamp":1771261456943,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261456945-cb5lenpw9","timestamp":1771261456945,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261456945-0u9ntibm6","timestamp":1771261456945,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504..."}
+{"id":"1771261480146-bynb6ptny","timestamp":1771261480146,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261480146-3qkegu67r","timestamp":1771261480146,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261480147-63wfiide0","timestamp":1771261480147,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261480147-xw16wojyv","timestamp":1771261480147,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261480147-gezbzoo9i","timestamp":1771261480147,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261480158-2ecnc75ce","timestamp":1771261480158,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261480184-nk3nugk11","timestamp":1771261480184,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261480184-ul20byaia","timestamp":1771261480184,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261480185-2fbpbzg76","timestamp":1771261480185,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261493032-mc0nukk4l","timestamp":1771261493032,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261493033-li8womit0","timestamp":1771261493033,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261493034-8guev6s5i","timestamp":1771261493034,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261498041-01tjn9sti","timestamp":1771261498041,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261498043-rfcq1iigp","timestamp":1771261498043,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261498044-wo96u3cg3","timestamp":1771261498044,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261503049-eoqguuj3h","timestamp":1771261503049,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261503055-m4gp8j38z","timestamp":1771261503055,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261503055-lmofa989q","timestamp":1771261503055,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261508058-r3euzvovs","timestamp":1771261508058,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261508065-mew3m06n8","timestamp":1771261508065,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261508065-txd9js4ax","timestamp":1771261508065,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261513070-jdw49obmr","timestamp":1771261513070,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261513077-ulm5ysmtb","timestamp":1771261513077,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261513078-x4tqd9i0x","timestamp":1771261513078,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261518090-74mzqut45","timestamp":1771261518090,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261518092-7yq236sr5","timestamp":1771261518092,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261518093-d866hp3g0","timestamp":1771261518093,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261523096-c22u1iepz","timestamp":1771261523096,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261523098-hyk9oufwj","timestamp":1771261523098,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261523099-2kl5c29gt","timestamp":1771261523099,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261528105-fqctn6jyg","timestamp":1771261528105,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261528111-emavbx4y1","timestamp":1771261528111,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261528111-wmomz42zz","timestamp":1771261528111,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261533119-nksnrje8o","timestamp":1771261533119,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261533125-itmkgq7n6","timestamp":1771261533125,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261533125-q684v0dca","timestamp":1771261533125,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261538126-0ctyucmdg","timestamp":1771261538126,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261538128-dri3gkfs3","timestamp":1771261538128,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261538128-00yrp907w","timestamp":1771261538128,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261543132-y6r97hbyp","timestamp":1771261543132,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261543136-p0gc10qmf","timestamp":1771261543136,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261543137-07ifrb2ye","timestamp":1771261543137,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261547702-60mr5g8p2","timestamp":1771261547702,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:61661","data":{"total":1}}
+{"id":"1771261548143-iow9bthvb","timestamp":1771261548143,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261548145-0yt8m8pa8","timestamp":1771261548145,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261548145-jhlvq9arb","timestamp":1771261548145,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261552227-bo3ks48x3","timestamp":1771261552227,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261552234-atqsm6u0c","timestamp":1771261552234,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261553152-bltbubawj","timestamp":1771261553152,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261553159-nagmhc2rk","timestamp":1771261553159,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261553159-5tn4hkor4","timestamp":1771261553159,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261556453-0djtbsgz6","timestamp":1771261556453,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261556460-a0g0ra6uh","timestamp":1771261556460,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261557242-qaexwk36k","timestamp":1771261557242,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261557244-4894bnazz","timestamp":1771261557244,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261557245-d8suc9sa0","timestamp":1771261557245,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261558166-961are1jl","timestamp":1771261558166,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261558173-ho8wwc72n","timestamp":1771261558173,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261558174-0yc53zous","timestamp":1771261558174,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261562248-viydtuwql","timestamp":1771261562248,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261563201-rgvmfygae","timestamp":1771261563201,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261563201-4789bpg0r","timestamp":1771261563201,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261563202-4hblrdlxj","timestamp":1771261563202,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261563202-8c01d4rgi","timestamp":1771261563202,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261563202-udzqbf4pm","timestamp":1771261563202,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261563212-jv4g7ag13","timestamp":1771261563212,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261563213-5oboffxot","timestamp":1771261563213,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261563213-jeozuwarl","timestamp":1771261563213,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261563214-o0maufu4w","timestamp":1771261563214,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261563332-s1t993rgt","timestamp":1771261563332,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:49174","data":{"total":1}}
+{"id":"1771261560735-joutu69an","timestamp":1771261560735,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261560736-s36pqnrnj","timestamp":1771261560736,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261560736-1u99wm1la","timestamp":1771261560736,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261563182-enyv1tmx4","timestamp":1771261563182,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261563184-1axfwc8gx","timestamp":1771261563184,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261563184-ixpghftfw","timestamp":1771261563184,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261568216-a0ajdsyzl","timestamp":1771261568216,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261568222-p3dsw5o95","timestamp":1771261568222,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261568223-5z0om3v5m","timestamp":1771261568223,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261568190-68b9c3b7j","timestamp":1771261568190,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261568192-ououv6cln","timestamp":1771261568192,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261568193-03o88pe5f","timestamp":1771261568193,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261571561-hotjj552s","timestamp":1771261571561,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261571568-0wlu4j35d","timestamp":1771261571568,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261573225-wr6dlf64d","timestamp":1771261573225,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261573231-at6opkets","timestamp":1771261573231,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261573231-tbregpwsp","timestamp":1771261573231,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261573200-eaiwmqscx","timestamp":1771261573200,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261573208-cobl09o1j","timestamp":1771261573208,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261573208-issq6su8z","timestamp":1771261573208,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261576739-vrxpfk0gw","timestamp":1771261576739,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261576740-hbezzoljr","timestamp":1771261576740,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261578222-1wtewredl","timestamp":1771261578222,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261578226-wcr92khsb","timestamp":1771261578226,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261578226-lyjkcj421","timestamp":1771261578226,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261579654-4i8v7b0i1","timestamp":1771261579654,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261579655-vebs3xcxg","timestamp":1771261579655,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261579655-l3s5oe0bf","timestamp":1771261579655,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261579656-58hwezq6w","timestamp":1771261579656,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261579656-prfbnbbx4","timestamp":1771261579656,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261579658-054glrmub","timestamp":1771261579658,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261579665-cik3s3rat","timestamp":1771261579665,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261579666-pzjip0qlx","timestamp":1771261579666,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261579666-lg8oudlzg","timestamp":1771261579666,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261579666-japcefp5u","timestamp":1771261579666,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261579679-kdb374ycr","timestamp":1771261579679,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:57557","data":{"total":1}}
+{"id":"1771261583238-d7wsib5vk","timestamp":1771261583238,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261583240-3bp4c2wco","timestamp":1771261583240,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261583240-0awyh7pkx","timestamp":1771261583240,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261584667-b3oue3s3v","timestamp":1771261584667,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261584680-ygxdn670k","timestamp":1771261584680,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261584680-obz576r72","timestamp":1771261584680,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261588253-ay94dsv99","timestamp":1771261588253,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261588260-fyiybcrb5","timestamp":1771261588260,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261588260-rmm5h58av","timestamp":1771261588260,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261589689-7ufq4bg2t","timestamp":1771261589689,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261589691-uniwvy2ud","timestamp":1771261589691,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261589692-up5kxwhub","timestamp":1771261589692,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261592250-zuglfgz8j","timestamp":1771261592250,"level":"warning","category":"Modbus Client","message":"Timeout na conexão com 192.168.3.115:504"}
+{"id":"1771261593285-pk7d03esn","timestamp":1771261593285,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261593288-zwfoxiu96","timestamp":1771261593288,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261593288-tc885xcph","timestamp":1771261593288,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261594692-s06lhpmnc","timestamp":1771261594692,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261594695-omnezid0n","timestamp":1771261594695,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261594695-ynus6orw1","timestamp":1771261594695,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261598299-g5eh9jev5","timestamp":1771261598299,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261598306-kfenkyyg9","timestamp":1771261598306,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261598307-1i8mc2ngh","timestamp":1771261598307,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261599705-jfzqvaxvc","timestamp":1771261599705,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261599712-hviluhgsg","timestamp":1771261599712,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261599712-c4vj2njvx","timestamp":1771261599712,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261603314-02tocjtsb","timestamp":1771261603314,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261603321-q9ht1gsxv","timestamp":1771261603321,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261603321-zeeicq1lh","timestamp":1771261603321,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261604719-cq3xq848h","timestamp":1771261604719,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261604725-dzuiu9abo","timestamp":1771261604725,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261604725-hwy6j20i3","timestamp":1771261604725,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261608334-y4yz3itvd","timestamp":1771261608334,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261608338-hwz4khfxd","timestamp":1771261608338,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261608338-noi2ds4yo","timestamp":1771261608338,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261609750-30xr9igce","timestamp":1771261609750,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261609756-qj57abjj6","timestamp":1771261609756,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261609756-zlecihhxc","timestamp":1771261609756,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261613344-ucp8gk2qi","timestamp":1771261613344,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261613347-dpsy2dt6i","timestamp":1771261613347,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261613347-q5ou42u7z","timestamp":1771261613347,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261614777-bo6xu4bun","timestamp":1771261614777,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261614779-cp4g4p6xl","timestamp":1771261614779,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261614780-1xlo5cagr","timestamp":1771261614780,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261618351-iw2unr0g6","timestamp":1771261618351,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261618357-d43eubb03","timestamp":1771261618357,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261618358-6gk03aep4","timestamp":1771261618358,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261619791-8izfv14cd","timestamp":1771261619791,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261619793-svr97q01l","timestamp":1771261619793,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261619793-4zv7p0wo5","timestamp":1771261619793,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261623372-pt91mxim3","timestamp":1771261623372,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261623379-13ry9a56o","timestamp":1771261623379,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261623379-11jqxl4n0","timestamp":1771261623379,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261624801-iqfb6bcry","timestamp":1771261624801,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261624808-eoq0fjgy8","timestamp":1771261624808,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261624808-1c58fzw2z","timestamp":1771261624808,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261628383-z7393le3a","timestamp":1771261628383,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261628385-lz7ct9l11","timestamp":1771261628385,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261628385-4xiru5w96","timestamp":1771261628385,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261629812-x1bttyzhj","timestamp":1771261629812,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261629818-3v0bk2uw5","timestamp":1771261629818,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261629818-oggkinq59","timestamp":1771261629818,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261633386-w4cc4u3pe","timestamp":1771261633386,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261633388-5nrh4f6t7","timestamp":1771261633388,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261633388-7flk0kxau","timestamp":1771261633388,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261634821-jo0siu77d","timestamp":1771261634821,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261634828-5c3db5egb","timestamp":1771261634828,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261634828-yqu3ji998","timestamp":1771261634828,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261638394-mt7z9g5qd","timestamp":1771261638394,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261638396-dsuxpsgor","timestamp":1771261638396,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261638397-vrxcfxtyv","timestamp":1771261638397,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261639837-c95yseqpz","timestamp":1771261639837,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261639839-nb5f0wdyr","timestamp":1771261639839,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261639839-523p6vjpx","timestamp":1771261639839,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261642986-ssmprchb9","timestamp":1771261642986,"level":"info","category":"Conexão","message":"Cliente desconectado: 127.0.0.1:57557","data":{"total":0}}
+{"id":"1771261643403-c5mzuqiro","timestamp":1771261643403,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261643410-treoriwk8","timestamp":1771261643410,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261643410-tyr6npid5","timestamp":1771261643410,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261644845-vjr80j9rk","timestamp":1771261644845,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261644848-hbxz3igj1","timestamp":1771261644848,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261644848-zdh7k0zwz","timestamp":1771261644848,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261646996-qhn83kzdh","timestamp":1771261646996,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:54526","data":{"total":1}}
+{"id":"1771261648412-whgicu0xx","timestamp":1771261648412,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261648418-bgarvlab1","timestamp":1771261648418,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261648419-uiskk0mx3","timestamp":1771261648419,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261649852-hp0dh807g","timestamp":1771261649852,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261649860-ka3xv2j59","timestamp":1771261649860,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261649860-5j0wqr1zs","timestamp":1771261649860,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261653420-dpm8bjer5","timestamp":1771261653420,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261653424-cd5npn8jv","timestamp":1771261653424,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261653425-blula5zn6","timestamp":1771261653425,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261654866-sac7pme4j","timestamp":1771261654866,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261654873-6w0yvqufm","timestamp":1771261654873,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261654873-dzxb1ew3m","timestamp":1771261654873,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261658428-vbe6imi8x","timestamp":1771261658428,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261658430-fgwt7uvxz","timestamp":1771261658430,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261658431-7hlsu1nrx","timestamp":1771261658431,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261659885-8sesadecx","timestamp":1771261659885,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261659887-09hqom8lx","timestamp":1771261659887,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261659888-268rkr6ax","timestamp":1771261659888,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261663438-6v1gqygwr","timestamp":1771261663438,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261663440-h51sm42w7","timestamp":1771261663440,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261663440-22o0abbuy","timestamp":1771261663440,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261664895-xz0qymt5d","timestamp":1771261664895,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261664897-noazwo1kv","timestamp":1771261664897,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261664897-ou0f4f6h2","timestamp":1771261664897,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261668452-ss5vzlc7i","timestamp":1771261668452,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261668458-csjo82ii7","timestamp":1771261668458,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261668459-94jx8a3r8","timestamp":1771261668459,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261669912-e1wzajzes","timestamp":1771261669912,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261669919-kbr15t1tg","timestamp":1771261669919,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261669920-r6v74lx94","timestamp":1771261669920,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261673463-1iqx0fu3d","timestamp":1771261673463,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261673469-epockjbgl","timestamp":1771261673469,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261673469-hga0jvg3z","timestamp":1771261673469,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261674928-7g13xlxd4","timestamp":1771261674928,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261674934-4difiaxik","timestamp":1771261674934,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261674934-1161wx09a","timestamp":1771261674934,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261678481-h0mclcxfw","timestamp":1771261678481,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261678483-h10cgj61g","timestamp":1771261678483,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261678483-9nb4i1wft","timestamp":1771261678483,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261679952-usor3q98g","timestamp":1771261679952,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261679958-sax2g79p2","timestamp":1771261679958,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261679958-tje2qaf4e","timestamp":1771261679958,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261683485-d3fa4c9u1","timestamp":1771261683485,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261683487-lf1yag02e","timestamp":1771261683487,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261683488-xqnf6abx","timestamp":1771261683488,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261688492-ijj88vdkb","timestamp":1771261688492,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261688494-kjq0vestj","timestamp":1771261688494,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261688495-diu99a9s4","timestamp":1771261688495,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261693501-99f9d8gb5","timestamp":1771261693501,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261693509-7gotkfb41","timestamp":1771261693509,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261693509-krdq8hekl","timestamp":1771261693509,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261694976-d5fumyyze","timestamp":1771261694976,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261694978-xe9sf7qj7","timestamp":1771261694978,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261694978-qqee2wn3w","timestamp":1771261694978,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261698518-8prpp3doa","timestamp":1771261698518,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261698525-7ymtxegz2","timestamp":1771261698525,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261698526-j792s9f80","timestamp":1771261698526,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261699990-4rlk75u8c","timestamp":1771261699990,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261699992-g6com0kkx","timestamp":1771261699992,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261699993-5ym08mjpu","timestamp":1771261699993,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261703531-8yf0gollw","timestamp":1771261703531,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261703533-0kbkx2mjc","timestamp":1771261703533,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261703533-rdqdjpjfe","timestamp":1771261703533,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261704998-pn6kts5lq","timestamp":1771261704998,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261705000-us5uroalk","timestamp":1771261705000,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261705000-0q2u0zreo","timestamp":1771261705000,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261708539-d1bvufvst","timestamp":1771261708539,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261708541-0ah1dp8wu","timestamp":1771261708541,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261708542-i6kx3yw0n","timestamp":1771261708542,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261710007-oj5lpi4a3","timestamp":1771261710007,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261710014-o6reioics","timestamp":1771261710014,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261710014-1ocqbrw5n","timestamp":1771261710014,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261713543-404oq177v","timestamp":1771261713543,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261713550-0rrfe81q6","timestamp":1771261713550,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261713551-7ab306p7d","timestamp":1771261713551,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261715018-3mmtjka2z","timestamp":1771261715018,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261715025-rqcfhvgxk","timestamp":1771261715025,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261715025-bwsdtyjdg","timestamp":1771261715025,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261718560-p52dt2a3f","timestamp":1771261718560,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261718567-b36i84cti","timestamp":1771261718567,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261718567-q0y4di1fa","timestamp":1771261718567,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261720027-fu3ck5eh6","timestamp":1771261720027,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261720029-m6tkxccx5","timestamp":1771261720029,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261720029-wgzdps96f","timestamp":1771261720030,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261723576-67j8m3w2n","timestamp":1771261723576,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261723580-bx6whgtwu","timestamp":1771261723580,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261723581-rbcwutv10","timestamp":1771261723581,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261725033-3drklm8ba","timestamp":1771261725033,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261725035-tbe7iawlo","timestamp":1771261725035,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261725036-x8cicoba4","timestamp":1771261725036,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261728585-nb9y9oy7w","timestamp":1771261728585,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261728587-ti07he0n0","timestamp":1771261728587,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261728588-x7yxcldnq","timestamp":1771261728588,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261730042-rpou3nr3u","timestamp":1771261730042,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261730044-wcs6k384r","timestamp":1771261730044,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261730045-c3o9imvzh","timestamp":1771261730045,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261733593-vcoygcrou","timestamp":1771261733593,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261733595-u56unneqo","timestamp":1771261733595,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261733596-a7chav3pu","timestamp":1771261733596,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261735049-37c4okb9q","timestamp":1771261735049,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261735056-mj16wpyc8","timestamp":1771261735056,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261735057-7tzyhx11p","timestamp":1771261735057,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261739050-77cyf4qpj","timestamp":1771261739050,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771261739051-j9gqe2r5u","timestamp":1771261739051,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771261738598-e1cp8b688","timestamp":1771261738598,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261738605-npd0s3r4n","timestamp":1771261738605,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261738605-201cmu92e","timestamp":1771261738605,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261743985-ro2q71r4f","timestamp":1771261743985,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261743986-r3sj7ia5x","timestamp":1771261743986,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261743987-5wypqczh3","timestamp":1771261743987,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261743987-2kuopwhk9","timestamp":1771261743987,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261743987-eg8hpts0f","timestamp":1771261743987,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261743989-fe7his7wd","timestamp":1771261743989,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261743991-kexksjg18","timestamp":1771261743991,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261743991-7p4k5wjij","timestamp":1771261743991,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261743992-7jmie7kie","timestamp":1771261743992,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261743992-p0kbiqhv8","timestamp":1771261743992,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261743609-i86dsqzxv","timestamp":1771261743609,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261743615-bqxvw9met","timestamp":1771261743615,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261743615-c65ssd7kt","timestamp":1771261743615,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261744415-tja83lfta","timestamp":1771261744415,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:60257","data":{"total":1}}
+{"id":"1771261749002-0a5foe79z","timestamp":1771261749002,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261749009-2hkep10is","timestamp":1771261749009,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261749009-5ceb8pu0g","timestamp":1771261749009,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261748631-8ucb02jw3","timestamp":1771261748631,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261748633-360b8tzqc","timestamp":1771261748633,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261748633-t1q3snmnj","timestamp":1771261748633,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261754015-ay8d8gm04","timestamp":1771261754015,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261754023-4m6jqpywc","timestamp":1771261754023,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261754023-ueemgi2rk","timestamp":1771261754023,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261753640-j1pifxz2r","timestamp":1771261753640,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261753642-yoxrod2d8","timestamp":1771261753642,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261753642-a850zy9vt","timestamp":1771261753642,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261759034-gdo1e4v9i","timestamp":1771261759034,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261759034-72dnxxyqp","timestamp":1771261759034,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261759034-74ogv3ks1","timestamp":1771261759034,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261758649-kmgti6om6","timestamp":1771261758649,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261758656-8py8021ax","timestamp":1771261758656,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261758656-sxvsr12yw","timestamp":1771261758656,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261764044-cnlp3ms41","timestamp":1771261764044,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261764046-egibxg1k3","timestamp":1771261764046,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261764046-bg0x58ohv","timestamp":1771261764046,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261763659-xksnkn9pa","timestamp":1771261763659,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261763667-na2d4b54a","timestamp":1771261763667,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261763667-beuv89l4l","timestamp":1771261763667,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261769050-70uh95gx8","timestamp":1771261769050,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261769058-kgagh7opx","timestamp":1771261769058,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261769058-gvh67kmlm","timestamp":1771261769058,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261768669-is0p23n75","timestamp":1771261768669,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261768676-akc92uizk","timestamp":1771261768676,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261768676-qfef4p6ld","timestamp":1771261768676,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261773682-13eoc8nxa","timestamp":1771261773682,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261773684-6olrz21kg","timestamp":1771261773684,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261773684-5deck26ev","timestamp":1771261773684,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261774077-ymj6lzsve","timestamp":1771261774077,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261774083-4t12if29z","timestamp":1771261774083,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261774083-pa6g2uv5f","timestamp":1771261774083,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261778685-stqvo76s6","timestamp":1771261778685,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261778687-5jq80mvk0","timestamp":1771261778687,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261778687-kkuenuha5","timestamp":1771261778687,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261779095-6lcrowm0m","timestamp":1771261779095,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261779097-25lb5pxiq","timestamp":1771261779097,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261779097-h0rxp086h","timestamp":1771261779097,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261783690-sbce8pd3n","timestamp":1771261783690,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261783691-162vuq8a4","timestamp":1771261783691,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261783692-ra6k9cdka","timestamp":1771261783692,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261784109-r16p5z9x6","timestamp":1771261784109,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261784115-f24qqc29t","timestamp":1771261784115,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261784116-yquc7eqcw","timestamp":1771261784116,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261788695-3jj9p6b6k","timestamp":1771261788695,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261788701-1psbhpihu","timestamp":1771261788701,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261788702-8zaxrx8x3","timestamp":1771261788702,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261789140-m4zfurg6a","timestamp":1771261789140,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261789142-16h10mmf2","timestamp":1771261789142,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261789143-3o1eder05","timestamp":1771261789143,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261793710-r1yjacyvz","timestamp":1771261793710,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261793717-m0w7uos8e","timestamp":1771261793717,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261793717-mktjfgflx","timestamp":1771261793717,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261808921-x1c0cli9i","timestamp":1771261808921,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261808921-86d4826pc","timestamp":1771261808921,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261808923-6462f8j8i","timestamp":1771261808923,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261808923-9p8ykntvl","timestamp":1771261808923,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261808923-hn7eb9a95","timestamp":1771261808923,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261808936-axb2ll3sx","timestamp":1771261808936,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261808964-xj2ozmemi","timestamp":1771261808964,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261808964-spm95mtr9","timestamp":1771261808964,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261808964-n1qv5xsbt","timestamp":1771261808965,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261809052-v9jzsmd59","timestamp":1771261809052,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:53692","data":{"total":1}}
+{"id":"1771261822334-cixeon4m8","timestamp":1771261822334,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261822336-0u8ru4lnz","timestamp":1771261822336,"level":"error","category":"Modbus Client","message":"Erro de conexão: read ECONNRESET"}
+{"id":"1771261827339-uzb0mn0qi","timestamp":1771261827339,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261827341-pj2fiow6q","timestamp":1771261827341,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261827341-8q9wdid8b","timestamp":1771261827341,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261832354-pkrtwry4a","timestamp":1771261832354,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261832361-46x9xeclf","timestamp":1771261832361,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261832361-e2jam7rsh","timestamp":1771261832361,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261837371-5e4b3raq5","timestamp":1771261837371,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261837374-zt7p87sfn","timestamp":1771261837374,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261837375-wabojkzm2","timestamp":1771261837375,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261842385-bwi6s5uwn","timestamp":1771261842385,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261842387-2vuwqqchh","timestamp":1771261842387,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261842387-i6qpn246c","timestamp":1771261842387,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261847393-yz9lwnoux","timestamp":1771261847393,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261847399-m7zec7z2n","timestamp":1771261847399,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261847400-g3vn436uv","timestamp":1771261847400,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261852409-qq8hzo4fa","timestamp":1771261852409,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261852417-43oimsw05","timestamp":1771261852417,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261852417-bv8z1fvd1","timestamp":1771261852417,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261857434-94ko1maey","timestamp":1771261857434,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261857435-oyaqliq4m","timestamp":1771261857435,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261857435-jlt3l9jvg","timestamp":1771261857435,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261862438-8xxszej0l","timestamp":1771261862438,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261862440-793zs1ozt","timestamp":1771261862440,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261862440-55b9127fp","timestamp":1771261862440,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261867445-g9o6e8pfz","timestamp":1771261867445,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261867447-rjsr98ot5","timestamp":1771261867447,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261867447-p6ca7oa6g","timestamp":1771261867447,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261872451-mbm6sx1vd","timestamp":1771261872451,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261872459-2t0rwxhmd","timestamp":1771261872459,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261872459-ow90ebhts","timestamp":1771261872459,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261877461-e9t3fjmap","timestamp":1771261877461,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261877469-1yy02lnb6","timestamp":1771261877469,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261877469-sz1sjtwaa","timestamp":1771261877469,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261882483-0hd8eq6k6","timestamp":1771261882483,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261882485-fbqy1stzs","timestamp":1771261882485,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261882485-je7803atf","timestamp":1771261882485,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261887491-d8cu52zv3","timestamp":1771261887491,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261887498-0urd4khrf","timestamp":1771261887498,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261887498-qp8hxrbuz","timestamp":1771261887498,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261892501-mlq1ojgi8","timestamp":1771261892501,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261892508-c4dmfpb09","timestamp":1771261892508,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261892508-o4hmkswcv","timestamp":1771261892508,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261897511-tk3v7ygs6","timestamp":1771261897511,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261897519-codqc089d","timestamp":1771261897519,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261897519-7zpkwz4uz","timestamp":1771261897519,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261902521-kn0gvzbmx","timestamp":1771261902521,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261902527-2t6tuutpt","timestamp":1771261902527,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261902528-in4o7sylh","timestamp":1771261902528,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261907531-ckdwbgyor","timestamp":1771261907531,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261907533-3dmdxkq1d","timestamp":1771261907533,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261907533-74m05lvn2","timestamp":1771261907533,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261912533-cbufq76hf","timestamp":1771261912533,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261912535-0s45rti3p","timestamp":1771261912535,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771261912535-9f7zlekwt","timestamp":1771261912535,"level":"info","category":"Modbus Client","message":"Tentando reconectar a 192.168.3.115:504 em segundo plano..."}
+{"id":"1771261930490-m7p1fv6rh","timestamp":1771261930490,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771261930491-ppc6r9scs","timestamp":1771261930491,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771261930492-eqmka9pxc","timestamp":1771261930492,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771261930493-qsblnhore","timestamp":1771261930493,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771261930493-bzbaysx4a","timestamp":1771261930493,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771261930503-4uhgen49w","timestamp":1771261930503,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771261930525-pwkaptc95","timestamp":1771261930525,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771261930525-hxuctrpa4","timestamp":1771261930525,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771261930525-w0u9yvev3","timestamp":1771261930525,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771261931569-1jwvg4hwu","timestamp":1771261931569,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:49195","data":{"total":1}}
+{"id":"1771262049872-31kv923a5","timestamp":1771262049872,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262049872-f34w79no9","timestamp":1771262049872,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262049874-xzjhnf5qh","timestamp":1771262049874,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262049874-n2k7j6g6b","timestamp":1771262049874,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262049874-a2dgwn8iq","timestamp":1771262049874,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262049885-q48c8ex7t","timestamp":1771262049885,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262049920-ipy9mpf7j","timestamp":1771262049920,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262049921-xvkdmttre","timestamp":1771262049921,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262049921-p8og73tqe","timestamp":1771262049921,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262050974-45xug1149","timestamp":1771262050974,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:64793","data":{"total":1}}
+{"id":"1771262194106-wmr1asxb3","timestamp":1771262194106,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262194107-nl0ipy74e","timestamp":1771262194107,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262194108-gea8a4lfz","timestamp":1771262194108,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262194109-97tnjtr2e","timestamp":1771262194109,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262194109-iqsboxv2v","timestamp":1771262194109,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262194111-vcjoul1r6","timestamp":1771262194111,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262194123-adbdwfwa5","timestamp":1771262194123,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262194123-fpnx1ine5","timestamp":1771262194123,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262194123-mwqm8ygxw","timestamp":1771262194123,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262194864-1rb6w7kon","timestamp":1771262194864,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:63731","data":{"total":1}}
+{"id":"1771262281944-lt3sbwhhl","timestamp":1771262281944,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262281944-8kgj991hr","timestamp":1771262281944,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262281945-7ji6s4hrv","timestamp":1771262281945,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262281945-ts2jg2y11","timestamp":1771262281945,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262281945-iuuc5q3en","timestamp":1771262281945,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262281956-8wo1eug40","timestamp":1771262281956,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262281976-cle3plr8z","timestamp":1771262281976,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262281976-mexwiw4w2","timestamp":1771262281976,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262281976-mh45z6d5g","timestamp":1771262281976,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262282585-jovbhgx8n","timestamp":1771262282585,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:59429","data":{"total":1}}
+{"id":"1771262398706-he85v2r36","timestamp":1771262398706,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262398706-pvnaduiop","timestamp":1771262398706,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262398708-rvaaxphjd","timestamp":1771262398708,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262398709-opznos4ho","timestamp":1771262398709,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262398709-ffzh3pfai","timestamp":1771262398709,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262398722-45qlnhdc3","timestamp":1771262398722,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262398743-6w3s42my5","timestamp":1771262398743,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262398743-u56d89sre","timestamp":1771262398743,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262398744-9m5t4dcfk","timestamp":1771262398744,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262399075-alb34zkau","timestamp":1771262399075,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:61676","data":{"total":1}}
+{"id":"1771262408801-4dbfwj9kc","timestamp":1771262408801,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771262408802-7nyozmbxb","timestamp":1771262408802,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771262408802-z6svaa9ik","timestamp":1771262408802,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771262505897-pl0vlk9xw","timestamp":1771262505897,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262505884-vc714z3tw","timestamp":1771262505884,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262505884-e7racc6hx","timestamp":1771262505884,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262505886-oq1deqw0h","timestamp":1771262505886,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262505886-pqw5kbfah","timestamp":1771262505886,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262505886-jqa1y9444","timestamp":1771262505886,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262505910-ef5iqh9t8","timestamp":1771262505910,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262505910-tfd6b1vh2","timestamp":1771262505910,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262505910-jhn5uyks3","timestamp":1771262505910,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262505918-7knjfjp9j","timestamp":1771262505918,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:61005","data":{"total":1}}
+{"id":"1771262557305-f3l1cv7xt","timestamp":1771262557305,"level":"info","category":"Conexão","message":"Cliente desconectado: 127.0.0.1:61005","data":{"total":0}}
+{"id":"1771262569953-pemaetuw1","timestamp":1771262569953,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771262569954-tpfgtq2wx","timestamp":1771262569954,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771262569956-zmel8yvev","timestamp":1771262569956,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771262574028-va64dpjkq","timestamp":1771262574028,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262574024-dks4xe3i5","timestamp":1771262574024,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262574025-5xokw1a07","timestamp":1771262574025,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262574026-0vhwp7u61","timestamp":1771262574026,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262574026-sh2wrpo30","timestamp":1771262574026,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262574026-7ig2wwwy9","timestamp":1771262574026,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262574060-pbhqmnd9c","timestamp":1771262574060,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262574060-x0z2gh7ti","timestamp":1771262574060,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262574061-35m4xigf1","timestamp":1771262574061,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262596013-m08gfyd1y","timestamp":1771262596013,"level":"success","category":"Controller","message":"Modo fachina ATIVADO"}
+{"id":"1771262597308-b3exxulkc","timestamp":1771262597308,"level":"success","category":"Controller","message":"Modo fachina DESATIVADO"}
+{"id":"1771262624591-rh3ur3g11","timestamp":1771262624591,"level":"warning","category":"Modbus Client","message":"Conexão fechada com 192.168.3.115:504"}
+{"id":"1771262624589-2ydj8ybs7","timestamp":1771262624589,"level":"info","category":"Modbus Server","message":"Servidor parado e porta liberada"}
+{"id":"1771262624591-feedmghwn","timestamp":1771262624591,"level":"info","category":"Controller","message":"Sistema parado completamente"}
+{"id":"1771262784933-lmk9qqvuw","timestamp":1771262784933,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262784926-su9jsl8vo","timestamp":1771262784926,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262784927-26ffy6e5n","timestamp":1771262784927,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262784928-nk4blmn8j","timestamp":1771262784928,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262784929-si44z7onv","timestamp":1771262784929,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262784929-5zof4aenv","timestamp":1771262784929,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262784974-lflkwhsee","timestamp":1771262784974,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262784974-hw63wefna","timestamp":1771262784974,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262784974-tq0ppvvmz","timestamp":1771262784974,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262836264-5fq7d7yz9","timestamp":1771262836264,"level":"success","category":"Modbus Client","message":"Conectado a 192.168.3.115:504"}
+{"id":"1771262836252-fy0t64rz4","timestamp":1771262836252,"level":"debug","category":"Modbus Server","message":"Buffers inicializados: 10000 coils, 10000 registers"}
+{"id":"1771262836252-m4k1ebwzx","timestamp":1771262836252,"level":"info","category":"Modbus Server","message":"Tentando iniciar servidor na porta 503..."}
+{"id":"1771262836254-b2gzzgqub","timestamp":1771262836254,"level":"success","category":"Modbus Server","message":"Servidor Slave rodando na porta 503 (todas as interfaces)"}
+{"id":"1771262836254-zrbiqx9gb","timestamp":1771262836254,"level":"success","category":"Controller","message":"Servidor Slave Pool iniciado na porta 503"}
+{"id":"1771262836254-jpg49mmn4","timestamp":1771262836254,"level":"info","category":"Controller","message":"Aguardando Slave Pool conectar em 0.0.0.0:503"}
+{"id":"1771262836284-epkdu0cyn","timestamp":1771262836284,"level":"success","category":"Controller","message":"Conectado ao CLP (Client) 192.168.3.115:504"}
+{"id":"1771262836284-ln4iu6ya7","timestamp":1771262836284,"level":"info","category":"Controller","message":"Tempos de motor escritos no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 32 ms"}
+{"id":"1771262836285-zgrmp492e","timestamp":1771262836285,"level":"success","category":"Controller","message":"Sistema iniciado com sucesso"}
+{"id":"1771262852612-jmrq0b1zw","timestamp":1771262852612,"level":"info","category":"Controller","message":"Tempos de motor atualizados no CLP (HRs 1, 2, 3, 4, 5, 6): 30, 26, 25, 25, 25, 40 ms"}
+{"id":"1771262852613-hvu8zqzh0","timestamp":1771262852613,"level":"info","category":"Controller","message":"Configuração atualizada"}
+{"id":"1771262868193-rf0m6yko5","timestamp":1771262868193,"level":"success","category":"Conexão","message":"Cliente conectado: 127.0.0.1:53622","data":{"total":1}}
+{"id":"1771262872880-64gr6ep8l","timestamp":1771262872880,"level":"info","category":"Controller","message":"Pulso detectado no sensor 1 - Produto tipo 1"}
+{"id":"1771262874422-7ps67tr3g","timestamp":1771262874422,"level":"info","category":"Controller","message":"Pulso detectado no sensor 1 - Produto tipo 1"}
+{"id":"1771262876908-abp96xhnv","timestamp":1771262876908,"level":"info","category":"Controller","message":"Pulso 500ms enviado para saída 1 (Saída 1) - Coil 0"}
+{"id":"1771262878472-blg48bahv","timestamp":1771262878472,"level":"info","category":"Controller","message":"Pulso 500ms enviado para saída 1 (Saída 1) - Coil 0"}
